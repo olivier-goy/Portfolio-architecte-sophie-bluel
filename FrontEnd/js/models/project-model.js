@@ -16,21 +16,19 @@ export default class Project {
     }
 
     createProjectCard() {
-        const gallery = document.querySelector(".gallery");
+
         const figure = document.createElement("figure");
         const image = document.createElement("img");
         const figcaption = document.createElement("figcaption");
 
-        gallery.appendChild(figure);
-        figure.appendChild(image);
-        figure.appendChild(figcaption);
-
         image.src = this.imageUrl;
         image.alt = this.title;
-
-        console.log("coucou", this.imageUrl);
+        image.crossOrigin = 'anonymous';
 
         figcaption.innerText = this.title;
+
+        figure.appendChild(image);
+        figure.appendChild(figcaption);
 
         return figure;
     }
