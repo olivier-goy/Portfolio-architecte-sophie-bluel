@@ -9,6 +9,7 @@ export default class Category {
     }
 
     createFilterCategory() {
+        
         const input = document.createElement('input');
 
         input.type = "submit";

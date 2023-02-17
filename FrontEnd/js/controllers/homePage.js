@@ -6,8 +6,6 @@ getDatas();
 let projects;
 let categories;
 
-
-
 async function getDatas() {
 
     const reponseApiWorks = await fetch("http://localhost:5678/api/works");
@@ -15,8 +13,6 @@ async function getDatas() {
 
     const reponseApiCategories = await fetch("http://localhost:5678/api/categories");
     const categoriesResponse = await reponseApiCategories.json();
-
-
 
     projects = worksResponse.map(work => new Project(work));
     generateHtml(projects);
@@ -29,23 +25,30 @@ async function getDatas() {
 };
 
 function getCategoryData() {
-    const listenerFilter = document.querySelector('.filterInput')
-    listenerFilter.addEventListener("click", function () {
-        console.log("HELLO")
 
-        const filters = projects.filter(function (project) {
-            if (listenerFilter.id == 0) {
-                return project;
-            } else {
-                return project.categoryId == listenerFilter.id;
-            }
+    const listenerFilter = document.querySelectorAll('.filterInput');
+
+    for(let i = 0; listenerFilter.length > i; i++) {
+        
+        const listener = listenerFilter[i];
+
+        listener.addEventListener("click", function () {
+
+            const filters = projects.filter(function (project) {
+
+                if (listener.id == 0) {
+                    return project;
+                } else {
+                    return project.categoryId == listener.id;
+                }
+            });
+            generateHtml(filters);
         });
-        generateHtml(filters);
-    });
+    }
 };
 
-
 function generateHtml(projects) {
+
     document.querySelector('.gallery').innerHTML = "";
     const gallery = document.querySelector('.gallery');
 
@@ -55,6 +58,7 @@ function generateHtml(projects) {
 };
 
 function generateCategory() {
+
     const gallery = document.getElementById('filter');
     const input = document.createElement('input');
 
@@ -67,7 +71,7 @@ function generateCategory() {
     gallery.appendChild(input);
 
     for (const category of categories) {
-        gallery.appendChild(category.createFilterCategory());
+       gallery.appendChild(category.createFilterCategory());
     }
 };
 
