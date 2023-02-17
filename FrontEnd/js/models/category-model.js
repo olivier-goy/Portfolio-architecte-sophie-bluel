@@ -9,10 +9,10 @@ export default class Category {
     }
 
     createFilterCategory() {
-        
+
         const input = document.createElement('input');
 
-        input.type = "submit";
+        input.type = "button";
         input.classList = "filterInput";
         input.id = this.id;
         input.placeholder = this.name;

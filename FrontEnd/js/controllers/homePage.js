@@ -28,11 +28,18 @@ function getCategoryData() {
 
     const listenerFilter = document.querySelectorAll('.filterInput');
 
+    listenerFilter[0].style.color = "#1D6154"
+
     for(let i = 0; listenerFilter.length > i; i++) {
         
         const listener = listenerFilter[i];
-
+        
+      
         listener.addEventListener("click", function () {
+            for (let i = 0; listenerFilter.length > i; i++) {
+                listenerFilter[i].style.color = "";
+            }
+            listener.style.color = "#1D6154";
 
             const filters = projects.filter(function (project) {
 
@@ -44,6 +51,7 @@ function getCategoryData() {
             });
             generateHtml(filters);
         });
+
     }
 };
 
@@ -62,7 +70,7 @@ function generateCategory() {
     const gallery = document.getElementById('filter');
     const input = document.createElement('input');
 
-    input.type = "submit";
+    input.type = "button";
     input.classList = "filterInput";
     input.id = 0;
     input.placeholder = "Tous";
