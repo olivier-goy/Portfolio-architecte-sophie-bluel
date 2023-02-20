@@ -28,7 +28,9 @@ function getCategoryData() {
 
     const listenerFilter = document.querySelectorAll('.filterInput');
 
-    listenerFilter[0].style.color = "#1D6154"
+    listenerFilter[0].style.backgroundColor = "#1D6154";
+    listenerFilter[0].style.color = "#FFFFFF";
+
 
     for(let i = 0; listenerFilter.length > i; i++) {
         
@@ -37,9 +39,10 @@ function getCategoryData() {
       
         listener.addEventListener("click", function () {
             for (let i = 0; listenerFilter.length > i; i++) {
-                listenerFilter[i].style.color = "";
+                listenerFilter[i].style = "";
             }
-            listener.style.color = "#1D6154";
+            listener.style.backgroundColor = "#1D6154";
+            listener.style.color = "#FFFFFF";
 
             const filters = projects.filter(function (project) {
 
