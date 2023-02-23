@@ -1,3 +1,5 @@
+import Category from "./category-model.js";
+
 export default class Project {
     id
     title
@@ -12,11 +14,10 @@ export default class Project {
         this.imageUrl = projectData.imageUrl
         this.categoryId = projectData.categoryId
         this.userId = projectData.userId
-        this.category = projectData.category        
+        this.category = new Category(projectData.category)        
     }
 
     createProjectCard() {
-
         const figure = document.createElement("figure");
         const image = document.createElement("img");
         const figcaption = document.createElement("figcaption");
@@ -31,9 +32,5 @@ export default class Project {
         figure.appendChild(figcaption);
 
         return figure;
-    }
-
-    createProjectTag() {
-
     }
 }

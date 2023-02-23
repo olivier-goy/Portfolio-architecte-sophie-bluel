@@ -30,6 +30,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	height: 100%;
 }
 ol, ul {
 	list-style: none;
@@ -124,14 +125,14 @@ li:hover {
 }
 #filter input {
 	font-family: 'Syne';
-		font-weight: 700;
-		margin: 10px 5px 50px 0;
-		padding: 0.75% 2%;
-		border: solid 1px #1D6154;
-		background-color: #FFFFFF;
-		text-align: center;
-		border-radius: 60px;
-		color: #1D6154;
+	font-weight: 700;
+	margin: 10px 5px 50px 0;
+	padding: 0.75% 2%;
+	border: solid 1px #1D6154;
+	background-color: #FFFFFF;
+	text-align: center;
+	border-radius: 60px;
+	color: #1D6154;
 }
 .gallery {
 	width: 100%;
@@ -143,12 +144,18 @@ li:hover {
 .gallery img {
 	width: 100%;
 }
+.loginContainer {
+	padding-top: 120px;
+	min-height: 100%;
+	position: relative;
+}
 #contact {
 	width: 50%;
 	margin: auto;
 }
 #contact > * {
-	text-align: center;
+	display: flex;
+	justify-content: center;
 }
 #contact h2{
 	margin-bottom: 20px;
@@ -172,6 +179,9 @@ li:hover {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+#contact a {
+	color: black;
+}
 input[type="submit"]{
 	font-family: 'Syne';
 	font-weight: 700;
@@ -182,9 +192,15 @@ input[type="submit"]{
 	text-align: center;
 	border-radius: 60px ;
 }
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 1140px;
+}
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
-	margin: 2em
+	margin: 2em;
 }
 
