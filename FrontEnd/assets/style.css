@@ -49,16 +49,41 @@ table {
 }
 /** end reset css**/
 body {
-	max-width: 1140px;
-	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
+}
+#navBarUser {
+	height: 60px;
+	background-color: #000000;
+}
+#navBarUser ul {
+	height: 60px;
+	display: flex;
+	justify-content: center;
+}
+#navBarUser li {
+	color: #FFFFFF;
+	width: 216px;
+	text-align: center;
+}
+#navBarUser .btnNavUser {
+	font-weight: 700;
+	padding: 0.6% 1.1%;
+	background-color: #FFFFFF;
+	border-radius: 60px;
+	text-align: center;
+	color: #000000;
+}
+.container {
+	max-width: 1140px;
+	margin: auto;
 }
 header {
 	display: flex;
 	justify-content: space-between;
 	margin: 50px 0
 }
+
 section {
 	margin: 50px 0
 }
@@ -89,6 +114,7 @@ nav ul {
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
+	cursor: pointer;
 }
 li:hover {
 	color: #B1663C;
@@ -105,20 +131,25 @@ li:hover {
 	margin: auto;
 	width: 80%;
 }
-
 #introduction article {
 	flex: 1
 }
 #introduction h2 {
 	margin-bottom: 1em;
 }
-
 #introduction p {
 	margin-bottom: 0.5em;
 }
 #portfolio h2 {
 	text-align: center;
-	margin-bottom: 1em;
+	margin: 6em 0 1em 0;
+}
+#userBtnModification {
+	font-size: 12px;
+	margin-left: 20px;
+	color: #000000;
+	align-items: center;
+	cursor: pointer;
 }
 #filter {
 	text-align: center;
@@ -133,6 +164,7 @@ li:hover {
 	text-align: center;
 	border-radius: 60px;
 	color: #1D6154;
+	cursor: pointer;
 }
 .gallery {
 	width: 100%;
@@ -192,7 +224,6 @@ input[type="submit"]{
 	text-align: center;
 	border-radius: 60px ;
 }
-
 .footer {
 	position: absolute;
 	bottom: 0;
@@ -203,4 +234,76 @@ footer nav ul {
 	justify-content: flex-end;
 	margin: 2em;
 }
+.modalProjectModification {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	padding-top: 10%;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+}
+.modalContent {
+	position: relative;
+	background-color: #FFFFFF;
+	margin: auto;
+	padding: 30px;
+	border-radius: 7px;
+	width: 630px;
+	height: 730px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	-webkit-animation-name: animatetop;
+	-webkit-animation-duration: 0.8s;
+	animation-name: animatetop;
+	animation-duration: 0.8s
+}
+@-webkit-keyframes animatetop {
+	from {
+		top: -300px;
+		opacity: 0
+	}
+	to {
+		top: 0;
+		opacity: 1
+	}
+}
 
+@keyframes animatetop {
+	from {
+		top: -300px;
+		opacity: 0
+	}
+	to {
+		top: 0;
+		opacity: 1
+	}
+}
+.closeModal {
+	color: black;
+	float: right;
+	padding: 0;
+	font-size: 28px;
+	cursor: pointer;
+}
+#mainModal {
+	padding: 70px;
+
+}
+#mainModal h2 {
+	color: #000000;
+	margin: 0;
+}
+#sectionModal {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-column-gap: 6px;
+	grid-row-gap: 5px;
+}
+#sectioModal img {
+	width: 100%;
+}

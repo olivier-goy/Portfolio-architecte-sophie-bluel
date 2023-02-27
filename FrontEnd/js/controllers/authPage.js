@@ -1,30 +1,17 @@
-import AuthUser from "../models/authUser-model.js";
+import AuthService from "../services/auth.service.js";
 
-let auth;
+const authService = new AuthService()
 
-postData();
-authLoginPage();
+validateAuthUser();
 
-async function postData() {
+async function validateAuthUser() {
+    let submitAuth = document.getElementById('submitAuth');
 
-    auth = new AuthUser();
-
-    validateAuthUser();
-};
-
-function authLoginPage() {
-    const login = document.querySelector('#login');
-    login.addEventListener('click', function () {
-        document.location.href="./loginPage.html"
-    });
-};
-
-function validateAuthUser() {
-
-    if (document.getElementById('submitAuth')) {
-        const submitAuth = document.getElementById('submitAuth');
+    if (submitAuth) {
     
-        submitAuth.addEventListener("click", function(event) {
+        submitAuth.addEventListener("submit", async function(event) {
+            event.preventDefault();
+
             const emailLogin = document.getElementById('email');
             const password = document.getElementById('password');
 
@@ -38,37 +25,21 @@ function validateAuthUser() {
                 const isValidPassword = regexPassword.test(password.value);
 
                 if (isValidEmail == true && isValidPassword == true ) {
-                    event.preventDefault();
 
                     const constructorLogin = {
                         email: emailLogin.value,
                         password: password.value
                     }
 
-                    const login = JSON.stringify(constructorLogin);
+                   const response = await authService.login(constructorLogin);
+                   if(!response) {
+                    return alert("Une erreur s'est produite")
+                   }
 
-                    async function postLoginData () {
-                        const postLogin = await fetch("http://localhost:5678/api/users/login", {
-                            method: "POST",
-                            headers: { "Content-Type": "application/json" },
-                            body: login
-                        })
+                    localStorage.setItem('userId', response.userId);
+                    localStorage.setItem('token', response.token);
 
-                        if(postLogin.status ==! 200) {
-                            alert('Erreur dans l’identifiant ou le mot de passe')
-                        } else {
-
-                            const response = await postLogin.json();
-
-                            const responseLogin = JSON.stringify(response)
-
-                            localStorage.setItem('user', responseLogin);
-
-                            document.location.href = "./index.html"
-                        }
-                    }
-
-                    postLoginData();
+                    document.location.href = "./index.html"
 
                 } else {
                     alert("Erreur dans l’identifiant ou le mot de passe");

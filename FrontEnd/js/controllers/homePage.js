@@ -2,6 +2,10 @@ import Project from "../models/project-model.js";
 
 let projects;
 let categories;
+const isConnected = !!localStorage.getItem('token');
+const login = document.getElementById('login');
+login.innerText = isConnected ? "logout" : "login";
+login.href = isConnected ? "" : "./loginPage.html";
 
 getDatas();
 
@@ -29,21 +33,34 @@ async function getDatas() {
 
     getCategoryData();
 
+    modalUser();
+
 
 };
 
 function userConnected() {
     if(localStorage.getItem('user')) {
-        console.log("HELLO");
+
+        // procédure pour idée récupération du token dans le localStorage
+        const localStorageUser = localStorage.user;
+        const jsonLocalStorageUser = JSON.parse(localStorageUser);
+        const UserToken = jsonLocalStorageUser.token;
+
+        // console.log(UserToken);
+        // console.log(JSON.parse(localStorage.user).token);
         document.getElementById('login').innerText = "Logout";
 
         const logoutUser = document.getElementById('login');
 
         logoutUser.addEventListener("click", function(){
             localStorage.clear();
+            location.reload();
         })
-
-
+    } else {
+        document.getElementById('navBarUser').remove();
+        document.getElementById('userBtnModification').remove();
+        document.getElementById('modalProject').remove();
+        
     }
 }
 
@@ -109,6 +126,44 @@ function generateCategory() {
             }
     }
 };
+
+function modalUser() {
+
+    if(localStorage.getItem('user')) {
+
+        document.getElementById('portfolio').querySelector('h2').style = "padding-left: 80px;"
+
+        const modal = document.getElementById('modalProject');
+        const openModal = document.getElementById('userBtnModification');
+    
+        openModal.addEventListener('click', function(){
+            modal.style.display = "block";
+        });
+
+        // if (document.getElementById('sectionModal')) {
+        //     document.getElementById('sectionModal').innerHTML = "";
+        //     const sectionMain = document.getElementById('sectionModal');
+
+        //     for (const project of projects) {
+        //         sectionMain.appendChild(project.createProjectCard());
+        //     }
+        // }
+
+        const closeModal = document.querySelector('.closeModal');
+
+        closeModal.addEventListener('click', function(){
+            modal.style.display = "none";
+        });
+
+        window.addEventListener('click', function(event){
+            if(event.target == modal) {
+                modal.style.display = "none";
+            }
+        });
+
+    }
+
+}
 
 
 
