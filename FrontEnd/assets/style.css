@@ -116,8 +116,12 @@ nav li {
 	font-size: 1.2em;
 	cursor: pointer;
 }
-li:hover {
+li:hover, a:hover {
 	color: #B1663C;
+}
+a {
+	color: #000000;
+	text-decoration: none;
 }
 #introduction {
 	display: flex;
@@ -219,7 +223,7 @@ input[type="submit"]{
 	font-weight: 700;
 	color: white;
 	background-color: #1D6154;
-	margin : 2em auto ;
+	margin : 2em auto;
 	width: 180px;
 	text-align: center;
 	border-radius: 60px ;
@@ -238,7 +242,7 @@ footer nav ul {
 	display: none;
 	position: fixed;
 	z-index: 1;
-	padding-top: 10%;
+	padding-top: 7%;
 	left: 0;
 	top: 0;
 	width: 100%;
@@ -290,20 +294,66 @@ footer nav ul {
 	cursor: pointer;
 }
 #mainModal {
-	padding: 70px;
+	padding: 40px 75px;
 
 }
 #mainModal h2 {
+	font-family: 'Work Sans';
+	font-weight: 400;
+	font-size: 26px;
+	line-height: 30px;
 	color: #000000;
 	margin: 0;
 }
 #sectionModal {
-	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-	grid-column-gap: 6px;
-	grid-row-gap: 5px;
-}
-#sectioModal img {
+	margin-top: 46px;
 	width: 100%;
+}
+#sectionModal figure {
+	justify-self: center;
+	overflow: hidden;
+	height: 141px;
+	width: 82px;
+}
+#sectionModal > figure img {
+	object-fit: cover;
+	height: 104px;
+	width: 100%;
+}
+#sectionModal > figure i {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	width: 17px;
+	height: 17px;
+	margin: 5px 0 0 59px;
+	color: white;
+	background-color: #000000;
+	border-radius: 2px;
+	cursor: pointer;
+
+}
+#separatorModal {
+	margin: 37px auto auto auto;
+	border-top: 1px solid #B3B3B3;
+	width: 98%;
+}
+
+#validateModal input {
+	display: flex;
+	justify-content: center;
+	border: none;
+	margin: 38px auto 15px auto;
+	width: 237px;
+	height: 36px;
+	cursor: pointer;
+}
+#validateModal a {
+	display: flex;
+	justify-content: center;
+	text-decoration: none;
+	color: #D65353;
 }

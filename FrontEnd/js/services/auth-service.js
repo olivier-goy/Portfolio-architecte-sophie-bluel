@@ -3,7 +3,6 @@ export default class AuthService {
 
     async login(credentials) {
         try {
-
             const body = JSON.stringify(credentials);
 
             const postLogin = await fetch(this.baseUrl + "login", {
@@ -11,20 +10,17 @@ export default class AuthService {
                 headers: { "Content-Type": "application/json" },
                 body
             })
+
             if(postLogin.status === 200){
                 const response = await postLogin.json();
-    
-                console.log(response);
-    
+        
                 return response;
             } else {
                 throw postLogin.statusText;
             }
-            
+
         } catch (error) {
             console.error(error);
         }
-
     }
-
 }

@@ -2,12 +2,14 @@ import Project from "../models/project-model.js";
 
 let projects;
 let categories;
+
+getDatas();
+
 const isConnected = !!localStorage.getItem('token');
 const login = document.getElementById('login');
 login.innerText = isConnected ? "logout" : "login";
 login.href = isConnected ? "" : "./loginPage.html";
 
-getDatas();
 
 async function getDatas() {
 
@@ -35,32 +37,21 @@ async function getDatas() {
 
     modalUser();
 
+    deletedProject()
+
 
 };
 
 function userConnected() {
-    if(localStorage.getItem('user')) {
-
-        // procédure pour idée récupération du token dans le localStorage
-        const localStorageUser = localStorage.user;
-        const jsonLocalStorageUser = JSON.parse(localStorageUser);
-        const UserToken = jsonLocalStorageUser.token;
-
-        // console.log(UserToken);
-        // console.log(JSON.parse(localStorage.user).token);
-        document.getElementById('login').innerText = "Logout";
-
-        const logoutUser = document.getElementById('login');
-
-        logoutUser.addEventListener("click", function(){
+    if (isConnected) {
+        login.addEventListener("click", function(){
             localStorage.clear();
             location.reload();
-        })
+        });
     } else {
         document.getElementById('navBarUser').remove();
         document.getElementById('userBtnModification').remove();
         document.getElementById('modalProject').remove();
-        
     }
 }
 
@@ -128,9 +119,7 @@ function generateCategory() {
 };
 
 function modalUser() {
-
-    if(localStorage.getItem('user')) {
-
+    if (isConnected) {
         document.getElementById('portfolio').querySelector('h2').style = "padding-left: 80px;"
 
         const modal = document.getElementById('modalProject');
@@ -140,14 +129,30 @@ function modalUser() {
             modal.style.display = "block";
         });
 
-        // if (document.getElementById('sectionModal')) {
-        //     document.getElementById('sectionModal').innerHTML = "";
-        //     const sectionMain = document.getElementById('sectionModal');
+        if (document.getElementById('sectionModal')) {
+            const sectionMain = document.getElementById('sectionModal');
+ 
+            for (const project of projects) {
+                const figure = document.createElement('figure');
+                const image = document.createElement('img');
+                const figcaption = document.createElement("figcaption");
+                const btnDeleted = document.createElement('i');
 
-        //     for (const project of projects) {
-        //         sectionMain.appendChild(project.createProjectCard());
-        //     }
-        // }
+                btnDeleted.classList = "fa-solid fa-trash-can fa-xs btnDeletedProject"
+                btnDeleted.id = project.id;
+                
+                image.src = project.imageUrl;
+                image.alt = project.title;
+                image.crossOrigin = 'anonymous';
+
+                figcaption.innerText = "éditer";
+
+                sectionMain.appendChild(figure)
+                figure.appendChild(btnDeleted)
+                figure.appendChild(image);
+                figure.appendChild(figcaption);
+            }
+        }
 
         const closeModal = document.querySelector('.closeModal');
 
@@ -160,9 +165,20 @@ function modalUser() {
                 modal.style.display = "none";
             }
         });
-
     }
+}
 
+function deletedProject() {
+    const btnListenerDeleted = document.querySelectorAll('.btnDeletedProject');
+
+    for(let i = 0; btnListenerDeleted.length > i; i++) {
+        const listenerDeletedProject = btnListenerDeleted[i];
+
+        listenerDeletedProject.addEventListener("click", function() {
+            console.log("id :",listenerDeletedProject.id);
+            console.log("token :", localStorage.getItem("token"));
+        });
+    }
 }
 
 

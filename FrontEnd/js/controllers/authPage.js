@@ -1,4 +1,4 @@
-import AuthService from "../services/auth.service.js";
+import AuthService from "../services/auth-service.js";
 
 const authService = new AuthService()
 
@@ -24,22 +24,23 @@ async function validateAuthUser() {
                 const regexPassword = new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,10}$/gm);
                 const isValidPassword = regexPassword.test(password.value);
 
-                if (isValidEmail == true && isValidPassword == true ) {
+                if (isValidEmail && isValidPassword) {
 
                     const constructorLogin = {
                         email: emailLogin.value,
                         password: password.value
                     }
 
-                   const response = await authService.login(constructorLogin);
-                   if(!response) {
-                    return alert("Une erreur s'est produite")
-                   }
-
+                    const response = await authService.login(constructorLogin);
+                    
+                    if (!response) {
+                        return alert("Une erreur s'est produite")
+                    } 
                     localStorage.setItem('userId', response.userId);
                     localStorage.setItem('token', response.token);
 
                     document.location.href = "./index.html"
+
 
                 } else {
                     alert("Erreur dans l’identifiant ou le mot de passe");
