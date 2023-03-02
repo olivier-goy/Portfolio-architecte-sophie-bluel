@@ -1,7 +1,9 @@
 import Project from "../models/project-model.js";
+import DeletedWork from "../services/deleteWork-service.js";
 
 let projects;
 let categories;
+let deletedWork;
 
 getDatas();
 
@@ -19,6 +21,8 @@ async function getDatas() {
     projects = worksResponse.map(work => new Project(work));
     generateHtml(projects);
 
+    deletedWork = new DeletedWork();
+
     // categories = [...new Set(projects.map(project => project.category))];
 
     categories = [];
@@ -31,15 +35,15 @@ async function getDatas() {
 
     userConnected();
     
+    modalUser();
+    
+    generateDeletedModal();
+    
+    deletedProject();
+
     generateCategory();
 
     getCategoryData();
-
-    modalUser();
-
-    deletedProject()
-
-
 };
 
 function userConnected() {
@@ -56,13 +60,11 @@ function userConnected() {
 }
 
 function getCategoryData() {
-
     if (document.querySelector('.filterInput')) {
         const listenerFilter = document.querySelectorAll('.filterInput');
     
         listenerFilter[0].style.backgroundColor = "#1D6154";
         listenerFilter[0].style.color = "#FFFFFF";
-    
     
         for(let i = 0; listenerFilter.length > i; i++) {
             const listener = listenerFilter[i];
@@ -129,31 +131,6 @@ function modalUser() {
             modal.style.display = "block";
         });
 
-        if (document.getElementById('sectionModal')) {
-            const sectionMain = document.getElementById('sectionModal');
- 
-            for (const project of projects) {
-                const figure = document.createElement('figure');
-                const image = document.createElement('img');
-                const figcaption = document.createElement("figcaption");
-                const btnDeleted = document.createElement('i');
-
-                btnDeleted.classList = "fa-solid fa-trash-can fa-xs btnDeletedProject"
-                btnDeleted.id = project.id;
-                
-                image.src = project.imageUrl;
-                image.alt = project.title;
-                image.crossOrigin = 'anonymous';
-
-                figcaption.innerText = "éditer";
-
-                sectionMain.appendChild(figure)
-                figure.appendChild(btnDeleted)
-                figure.appendChild(image);
-                figure.appendChild(figcaption);
-            }
-        }
-
         const closeModal = document.querySelector('.closeModal');
 
         closeModal.addEventListener('click', function(){
@@ -168,6 +145,33 @@ function modalUser() {
     }
 }
 
+function generateDeletedModal() {
+    if (document.getElementById('sectionModal')) {
+        const sectionMain = document.getElementById('sectionModal');
+
+        for (const project of projects) {
+            const figure = document.createElement('figure');
+            const image = document.createElement('img');
+            const figcaption = document.createElement("figcaption");
+            const btnDeleted = document.createElement('i');
+
+            btnDeleted.classList = "fa-solid fa-trash-can fa-xs btnDeletedProject"
+            btnDeleted.id = project.id;
+
+            image.src = project.imageUrl;
+            image.alt = project.title;
+            image.crossOrigin = 'anonymous';
+
+            figcaption.innerText = "éditer";
+
+            sectionMain.appendChild(figure)
+            figure.appendChild(btnDeleted)
+            figure.appendChild(image);
+            figure.appendChild(figcaption);
+        }
+    }
+}
+
 function deletedProject() {
     const btnListenerDeleted = document.querySelectorAll('.btnDeletedProject');
 
@@ -175,8 +179,22 @@ function deletedProject() {
         const listenerDeletedProject = btnListenerDeleted[i];
 
         listenerDeletedProject.addEventListener("click", function() {
-            console.log("id :",listenerDeletedProject.id);
-            console.log("token :", localStorage.getItem("token"));
+            const constructorDeleted = {
+                id: listenerDeletedProject.id,
+                token: localStorage.getItem("token")
+            }
+
+            const responseDeleted = deletedWork.deletedProjectService(constructorDeleted);
+
+
+             
+            if(!responseDeleted) {
+                alert("Une erreur c'est produite");
+            } else {
+                document.getElementById('filter').innerHTML = "";
+                document.getElementById('sectionModal').innerHTML = "";
+                getDatas();
+            }
         });
     }
 }
