@@ -312,23 +312,23 @@ footer nav ul {
 	color: #000000;
 	margin: 0;
 }
-#sectionModal {
+#deletedWork {
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	margin-top: 46px;
 	width: 100%;
 }
-#sectionModal figure {
+#deletedWork figure {
 	justify-self: center;
 	overflow: hidden;
 	height: 141px;
 	width: 82px;
 }
-#sectionModal > figure img {
+#deletedWork > figure img {
 	object-fit: cover;
 	height: 104px;
 	width: 100%;
 }
-#sectionModal > figure i {
+#deletedWork > figure i {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -346,21 +346,27 @@ footer nav ul {
 	display: flex;
 	justify-content: center;
 }
-#separatorModal {
+#separatorModal, #separatorAddWork {
 	margin: 37px auto auto auto;
 	border-top: 1px solid #B3B3B3;
 }
 
-#validateModal input {
+#addNewImage input, #submitAddWork input[type="submit"] {
 	display: flex;
 	justify-content: center;
+	align-items: center;
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	border-radius: 60px;
 	border: none;
 	margin: 38px auto 15px auto;
 	width: 237px;
 	height: 36px;
 	cursor: pointer;
 }
-#validateModal a {
+#addNewImage a {
 	display: flex;
 	justify-content: center;
 	text-decoration: none;

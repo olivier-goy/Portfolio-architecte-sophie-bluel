@@ -39,18 +39,18 @@ async function getDatas() {
 
     categories = [];
     projects.forEach(project => {
-       const category = categories.find(cat => cat.id == project.category.id);
-       if (!category) {
-        categories.push(project.category); 
-       }
+        const category = categories.find(cat => cat.id == project.category.id);
+        if (!category) {
+            categories.push(project.category);
+        }
     });
 
     userConnected();
-    
+
     modalUser();
-    
+
     generateDeletedModal();
-    
+
     deletedProject();
 
     generateCategory();
@@ -66,7 +66,7 @@ async function getDatas() {
 
 function userConnected() {
     if (isConnected) {
-        login.addEventListener("click", function(){
+        login.addEventListener("click", function () {
             localStorage.clear();
             location.reload();
         });
@@ -80,13 +80,13 @@ function userConnected() {
 function getCategoryData() {
     if (document.querySelector('.filterInput')) {
         const listenerFilter = document.querySelectorAll('.filterInput');
-    
+
         listenerFilter[0].style.backgroundColor = "#1D6154";
         listenerFilter[0].style.color = "#FFFFFF";
-    
-        for(let i = 0; listenerFilter.length > i; i++) {
+
+        for (let i = 0; listenerFilter.length > i; i++) {
             const listener = listenerFilter[i];
-            
+
             listener.addEventListener("click", function () {
                 for (let i = 0; listenerFilter.length > i; i++) {
                     listenerFilter[i].style = "";
@@ -94,7 +94,7 @@ function getCategoryData() {
 
                 listener.style.backgroundColor = "#1D6154";
                 listener.style.color = "#FFFFFF";
-    
+
                 const filters = projects.filter(function (project) {
                     if (listener.id == 0) {
                         return project;
@@ -109,7 +109,7 @@ function getCategoryData() {
 };
 
 function generateHtml(projects) {
-    if(document.querySelector('.gallery')) {
+    if (document.querySelector('.gallery')) {
         document.querySelector('.gallery').innerHTML = "";
         const gallery = document.querySelector('.gallery');
 
@@ -121,20 +121,20 @@ function generateHtml(projects) {
 
 function generateCategory() {
     if (document.getElementById('filter')) {
-            const gallery = document.getElementById('filter');
-            const input = document.createElement('input');
-        
-            input.type = "button";
-            input.classList = "filterInput";
-            input.id = 0;
-            input.placeholder = "Tous";
-            input.value = "Tous";
-        
-            gallery.appendChild(input);
-        
-            for (const category of categories) {
-               gallery.appendChild(category.createFilterCategory());
-            }
+        const gallery = document.getElementById('filter');
+        const input = document.createElement('input');
+
+        input.type = "button";
+        input.classList = "filterInput";
+        input.id = 0;
+        input.placeholder = "Tous";
+        input.value = "Tous";
+
+        gallery.appendChild(input);
+
+        for (const category of categories) {
+            gallery.appendChild(category.createFilterCategory());
+        }
     }
 };
 
@@ -144,24 +144,27 @@ function modalUser() {
 
         const modal = document.getElementById('modalProject');
         const openModal = document.getElementById('userBtnModification');
-        openModal.addEventListener('click', function(){
+        openModal.addEventListener('click', function () {
             modal.style.display = "block";
         });
 
         const backModal = document.querySelector('.backModal');
-        backModal.addEventListener('click', function() {
-            generateDeletedModal();
-            generateAddWorkModal();
-            deletedProject();
+        backModal.addEventListener('click', function () {
+            document.getElementById('titleModal').innerText = "Galerie photo";
+            document.querySelector('.backModal').style.display = "block";
+            document.getElementById('submitAddWork').style.display = "none";
+            document.getElementById('deletedWork').style.display = "grid";
+            document.getElementById('separatorModal').style.display = "block"
+            document.getElementById('addNewImage').style.display = "block"
         });
-        
+
         const closeModal = document.querySelector('.closeModal');
-        closeModal.addEventListener('click', function(){
+        closeModal.addEventListener('click', function () {
             modal.style.display = "none";
         });
 
-        window.addEventListener('click', function(event){
-            if(event.target == modal) {
+        window.addEventListener('click', function (event) {
+            if (event.target == modal) {
                 modal.style.display = "none";
             }
         });
@@ -171,14 +174,12 @@ function modalUser() {
 function generateDeletedModal() {
     if (document.querySelector('.modalContent')) {
         document.querySelector('.backModal').style.display = "none";
-        document.getElementById('sectionModal').innerHTML = "";
-        document.getElementById('sectionModal').style.display = "grid";
-        document.getElementById('validateModal').innerHTML = "";
+        document.getElementById('submitAddWork').style.display = "none"
+        document.getElementById('deletedWork').style.display = "grid";
         document.getElementById('titleModal').innerText = "";
-
         document.getElementById('titleModal').innerText = "Galerie photo";
 
-        const sectionMain = document.getElementById('sectionModal');
+        const sectionMain = document.getElementById('deletedWork');
 
         for (const project of projects) {
             const figure = document.createElement('figure');
@@ -200,34 +201,16 @@ function generateDeletedModal() {
             figure.appendChild(image);
             figure.appendChild(figcaption);
         }
-
-        const validateModal = document.getElementById('validateModal');
-        const inputAddPicture = document.createElement('input');
-        const br = document.createElement('br')
-        const deleteAll = document.createElement('a');
-
-        inputAddPicture.type = "submit";
-        inputAddPicture.id = "addPicture";
-        inputAddPicture.placeholder = "Ajouter une photo";
-        inputAddPicture.value = "Ajouter une photo";
-
-        deleteAll.id = "deleteAll";
-        deleteAll.href = "#";
-        deleteAll.innerText = "Supprimer la galerie";
-
-        validateModal.appendChild(inputAddPicture);
-        validateModal.appendChild(br);
-        validateModal.appendChild(deleteAll);
     }
 }
 
 function deletedProject() {
     const btnListenerDeleted = document.querySelectorAll('.btnDeletedProject');
 
-    for(let i = 0; btnListenerDeleted.length > i; i++) {
+    for (let i = 0; btnListenerDeleted.length > i; i++) {
         const listenerDeletedProject = btnListenerDeleted[i];
 
-        listenerDeletedProject.addEventListener("click", function(event) {
+        listenerDeletedProject.addEventListener("click", function (event) {
             const constructorDeleted = {
                 id: listenerDeletedProject.id,
                 token: localStorage.getItem("token")
@@ -235,162 +218,60 @@ function deletedProject() {
 
             const responseDeleted = deletedWork.deletedProjectService(constructorDeleted);
 
-            if(!responseDeleted) {
+            if (!responseDeleted) {
                 alert("Une erreur c'est produite");
             } else {
                 event.target.parentNode.remove();
-                // document.getElementById('filter').innerHTML = "";
-                // document.getElementById('sectionModal').innerHTML = "";
-                // getDatas();
             };
         });
     }
 }
 async function generateAddWorkModal() {
-    if (document.getElementById('addPicture')) {
-        const btnAddPicture = document.getElementById('addPicture');
-    
-        btnAddPicture.addEventListener("click", function() {
-            document.querySelector('.backModal').style.display = "block"
-            document.getElementById('sectionModal').innerHTML = "";
-            document.getElementById('sectionModal').style.display = "flex";
-            document.getElementById('validateModal').innerHTML = "";
-            document.getElementById('titleModal').innerText = "";
-            
-    
-            const title = document.getElementById('titleModal');
-    
-            title.innerText = "Ajouter photo";
-    
-            const sectionModal = document.getElementById('sectionModal');
-            const form = document.createElement('form');
-            const inputImage = document.createElement('input');
-            const labelTitle = document.createElement('label');
-            const inputTitle = document.createElement('input');
-            const labelCategory = document.createElement('label');
-            const selectCategory = document.createElement('select');
-            const optionCategory = document.createElement('option');
-    
-            form.id = "submitAddWork";
-            form.method = "POST";
-            form.enctype = "multipart/form-data";
-            form.name = "fileinfo"
-            
-            inputImage.id = "addNewProjectPicture"
-            inputImage.type = "file";
-            inputImage.name = "image"
-            inputImage.accept = "image/jpeg, image/png"
-            inputImage.ariaRequired = true
-    
-            labelTitle.innerText = "Titre";
-    
-            inputTitle.id = "addNewProjectTitle";
-            inputTitle.type = "text";
-            inputTitle.name = "title"
-            inputTitle.ariaRequired = true;
-    
-    
-            labelCategory.innerText = "Catégorie";
-            labelCategory.htmlFor = "addNewProjectCategory"
-    
-            selectCategory.name = "category"
-            selectCategory.id = "addNewProjectCategory";
-            selectCategory.ariaRequired = true;
-    
-            optionCategory.value = "0";
-            optionCategory.id = "selectCategory";
-    
-            sectionModal.appendChild(form);
-    
-            form.appendChild(inputImage);
-            form.appendChild(labelTitle);
-            form.appendChild(inputTitle);
-            form.appendChild(labelCategory);
-            form.appendChild(selectCategory);
-    
-            selectCategory.appendChild(optionCategory);
-    
-            for (const category of categoriesApi) {
-                selectCategory.appendChild(category.createNewProjectCategory());
-            }
-            
-    
-            const validateModal = document.getElementById('validateModal')
-            const btnAddWork = document.createElement('input');
-    
-            btnAddWork.type = "submit";
-            btnAddWork.id = "validateAddNewWork";
-            btnAddWork.value = "Valider";
-            btnAddWork.placeholder = "Valider";
-    
-            validateModal.appendChild(btnAddWork);
-    
-            validateAddNewWork();
-        });
-    }
+    const btnAddPicture = document.getElementById('btnAddNewImage');
+
+    btnAddPicture.addEventListener("click", function () {
+        document.querySelector('.backModal').style.display = "block"
+        document.getElementById('deletedWork').style.display = "none"
+        document.getElementById('submitAddWork').style.display = "flex"
+        document.getElementById('btnValidateNewWork').style.display = "flex";
+        document.getElementById('addNewImage').style.display = "none";
+        document.getElementById('separatorModal').style.display = "none";
+        document.getElementById('titleModal').innerText = "";
+
+
+        const title = document.getElementById('titleModal');
+        const selectCategory = document.getElementById('addNewProjectCategory')
+
+        title.innerText = "Ajouter photo";
+
+        for (const category of categoriesApi) {
+            selectCategory.appendChild(category.createNewProjectCategory());
+        }
+     
+    });
 }
 
 function validateAddNewWork() {
-    if (document.getElementById('validateAddNewWork')) {
-        const inputNewProjectPicture = document.getElementById('addNewProjectPicture');
-        const inputNewProjectTitle = document.getElementById('addNewProjectTitle');
-        const selectNewProjectCategory = document.getElementById('addNewProjectCategory');
-        const btnValidateNewWork = document.getElementById('validateAddNewWork');
-
-        btnValidateNewWork.addEventListener('click', async function () {  
-            // const formAddNewWork = document.getElementById('submitAddWork');
-            const addNewProjectImage = inputNewProjectPicture.files[0];
-            const addNewProjectTitle = inputNewProjectTitle.value;
-            const addNewProjectCategory = selectNewProjectCategory.value; 
-
-            console.log(addNewProjectImage); 
-            console.log(addNewProjectTitle); 
-            console.log(addNewProjectCategory); 
-
+    const formSubmit = document.getElementById('submitAddWork');
+    const inputNewProjectPicture = document.getElementById('addNewProjectPicture');
+    const inputNewProjectTitle = document.getElementById('addNewProjectTitle');
+    const selectNewProjectCategory = document.getElementById('addNewProjectCategory');
+    formSubmit.addEventListener('submit', function (event) {
+        event.preventDefault();
         
-            const formData = new FormData();
+        const addNewProjectImage = inputNewProjectPicture.files[0];
+        const addNewProjectTitle = inputNewProjectTitle.value;
+        const addNewProjectCategory = selectNewProjectCategory.value;
 
-            formData.append("image", addNewProjectImage);
-            formData.append("title", addNewProjectTitle);
-            formData.append("category", addNewProjectCategory);
-            
-            // const blob = new Blob([addNewProjectImage], {type: "image/png"});
+        const formData = new FormData();
 
-            // const reader = new FileReader();
-            
-            // reader.readAsDataURL(blob);
+        formData.append("image", addNewProjectImage);
+        formData.append("title", addNewProjectTitle);
+        formData.append("category", addNewProjectCategory);
 
+        createWork.createWork(formData);
+    });
 
-            // let constructorNewWork;
-            
-            // reader.onload = function() {
-            //     constructorNewWork = {
-            //         image: reader.result,
-            //         title: addNewProjectTitle,
-            //         category: addNewProjectCategory
-            //     }
-            //     console.log(constructorNewWork);
-                createWork.createWork(formData);
-
-
-            // }
-
-            
-            
-
-
-            // formData.append("image", reader);
-
-            // formData.append("title", addNewProjectTitle);
-
-            // formData.append("category", addNewProjectCategory);
-
-
-
-
-        })
-
-    }
 }
 
 
