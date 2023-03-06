@@ -3,7 +3,6 @@ export default class DeletedWork {
 
     async deletedProjectService(credentials){
         try {
-            console.log("HELLO SERVICE");
             const deleted = await fetch(this.baseUrl + "/" + credentials.id, {
                 method: "DELETE",
                 headers: {

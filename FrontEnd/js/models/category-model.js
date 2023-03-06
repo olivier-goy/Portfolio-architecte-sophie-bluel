@@ -9,7 +9,6 @@ export default class Category {
     }
 
     createFilterCategory() {
-
         const input = document.createElement('input');
 
         input.type = "button";
@@ -19,6 +18,15 @@ export default class Category {
         input.value = this.name;
 
         return input;
+    }
 
+    createNewProjectCategory() {
+        const option = document.createElement('option');
+
+        option.value = this.id;
+        option.id = "selectCategory"
+        option.innerText = this.name;
+
+        return option
     }
 }

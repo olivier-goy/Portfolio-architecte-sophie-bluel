@@ -196,19 +196,19 @@ a {
 #contact h2{
 	margin-bottom: 20px;
 }
-#contact form {
+#contact form, #sectionModal form {
 	text-align: left;
 	margin-top:30px;
 	display: flex;
 	flex-direction: column;
 }
-#contact input {
+#contact input, #sectionModal input, #sectionModal select {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-#contact label {
+#contact label, #sectionModal label {
 	margin: 2em 0 1em 0;
 }
 #contact textarea {
@@ -242,7 +242,7 @@ footer nav ul {
 	display: none;
 	position: fixed;
 	z-index: 1;
-	padding-top: 7%;
+	padding-top: 2%;
 	left: 0;
 	top: 0;
 	width: 100%;
@@ -258,7 +258,7 @@ footer nav ul {
 	padding: 30px;
 	border-radius: 7px;
 	width: 630px;
-	height: 730px;
+	height: auto;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	-webkit-animation-name: animatetop;
 	-webkit-animation-duration: 0.8s;
@@ -293,6 +293,13 @@ footer nav ul {
 	font-size: 28px;
 	cursor: pointer;
 }
+.backModal {
+	color: #000000;
+	float: left;
+	padding: 0;
+	font-size: 25px;
+	cursor: pointer;
+}
 #mainModal {
 	padding: 40px 75px;
 
@@ -306,7 +313,6 @@ footer nav ul {
 	margin: 0;
 }
 #sectionModal {
-	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	margin-top: 46px;
 	width: 100%;
@@ -334,12 +340,15 @@ footer nav ul {
 	background-color: #000000;
 	border-radius: 2px;
 	cursor: pointer;
-
+}
+#sectionModal form {
+	width: 100%;
+	display: flex;
+	justify-content: center;
 }
 #separatorModal {
 	margin: 37px auto auto auto;
 	border-top: 1px solid #B3B3B3;
-	width: 98%;
 }
 
 #validateModal input {
