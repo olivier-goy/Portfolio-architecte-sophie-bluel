@@ -16,7 +16,6 @@ const login = document.getElementById('login');
 login.innerText = isConnected ? "logout" : "login";
 login.href = isConnected ? "" : "./loginPage.html";
 
-
 async function getDatas() {
 
     const reponseApiWorks = await fetch("http://localhost:5678/api/works");
@@ -62,7 +61,6 @@ async function getDatas() {
     validateAddNewWork();
 
 };
-
 
 function userConnected() {
     if (isConnected) {
@@ -151,7 +149,7 @@ function modalUser() {
         const backModal = document.querySelector('.backModal');
         backModal.addEventListener('click', function () {
             document.getElementById('titleModal').innerText = "Galerie photo";
-            document.querySelector('.backModal').style.display = "block";
+            document.querySelector('.backModal').style.display = "none";
             document.getElementById('submitAddWork').style.display = "none";
             document.getElementById('deletedWork').style.display = "grid";
             document.getElementById('separatorModal').style.display = "block"
@@ -238,27 +236,36 @@ async function generateAddWorkModal() {
         document.getElementById('separatorModal').style.display = "none";
         document.getElementById('titleModal').innerText = "";
 
-
         const title = document.getElementById('titleModal');
         const selectCategory = document.getElementById('addNewProjectCategory')
 
-        title.innerText = "Ajouter photo";
+        title.innerText = "Ajout photo";
 
         for (const category of categoriesApi) {
             selectCategory.appendChild(category.createNewProjectCategory());
         }
-     
     });
 }
 
 function validateAddNewWork() {
     const formSubmit = document.getElementById('submitAddWork');
+    const image = document.getElementById('watchImage' );
     const inputNewProjectPicture = document.getElementById('addNewProjectPicture');
     const inputNewProjectTitle = document.getElementById('addNewProjectTitle');
     const selectNewProjectCategory = document.getElementById('addNewProjectCategory');
+    
+    inputNewProjectPicture.addEventListener('change', function() {
+        console.log("HELLO");
+        const reader = new FileReader();
+        reader.addEventListener('load', function() {
+            console.log(reader.result);
+        }, false);
+
+    });
+
+
     formSubmit.addEventListener('submit', function (event) {
         event.preventDefault();
-        
         const addNewProjectImage = inputNewProjectPicture.files[0];
         const addNewProjectTitle = inputNewProjectTitle.value;
         const addNewProjectCategory = selectNewProjectCategory.value;
@@ -270,6 +277,7 @@ function validateAddNewWork() {
         formData.append("category", addNewProjectCategory);
 
         createWork.createWork(formData);
+        console.log(formData);
     });
 
 }

@@ -52,8 +52,14 @@
 				</article>
 			</section>
 			<section id="portfolio">
-				<h2>Mes Projets <span id="userBtnModification"><a><i class="fa-regular fa-lg fa-pen-to-square"></i>
-							Modifier</a></span></h2>
+				<h2>Mes Projets 
+					<span id="userBtnModification">
+						<a>
+							<i class="fa-regular fa-lg fa-pen-to-square"></i>
+							Modifier
+						</a>
+					</span>
+				</h2>
 				<div id="modalProject" class="modalProjectModification">
 					<div class="modalContent">
 						<span class="backModal">&larr;</span>
@@ -62,11 +68,16 @@
 							<h2 id="titleModal"></h2>
 							<div id="sectionModal">
 								<div id="deletedWork"></div>
-								<form id="submitAddWork">
-									<input type="file" id="addNewProjectPicture" name="image"
-										placeholder="+ Ajouter photo" accept="image/jpeg image/png" required>
+								<form id="submitAddWork" methode="post" enctype="multipart/form-data">
+									<div id="addImage">
+										<img id="watchImage" alt="">
+										<label for="addNewProjectPicture" class="inputFile">+ Ajouter photo</label>
+										<p>jpeg, png : 4Mo max</p>
+										<input type="file" id="addNewProjectPicture" multiple name="image"
+											placeholder="+ Ajouter photo" accept="image/jpeg image/png" required>
+									</div>
 									<label>Titre</label>
-									<input type="text" id="addNewProjectTitle" name="title" placeholder="" value="" required>
+									<input type="text" id="addNewProjectTitle" name="title" placeholder="d" value="" required>
 									<label for="addNewProjectCategory">Catégorie</label>
 									<select name="category" id="addNewProjectCategory" required>
 										<option id="selectCategory" value="0"></option>
