@@ -3,7 +3,6 @@ export default class CreateWorkService {
 
     async createWork(body) {
         try {
-
             const sendNewWork = await fetch('http://localhost:5678/api/works', {
                 method: "POST",
                 headers: {

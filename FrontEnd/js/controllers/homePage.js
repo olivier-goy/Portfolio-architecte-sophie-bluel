@@ -249,19 +249,22 @@ async function generateAddWorkModal() {
 
 function validateAddNewWork() {
     const formSubmit = document.getElementById('submitAddWork');
-    const image = document.getElementById('watchImage' );
     const inputNewProjectPicture = document.getElementById('addNewProjectPicture');
     const inputNewProjectTitle = document.getElementById('addNewProjectTitle');
     const selectNewProjectCategory = document.getElementById('addNewProjectCategory');
+
     
-    inputNewProjectPicture.addEventListener('change', function() {
-        console.log("HELLO");
-        const reader = new FileReader();
-        reader.addEventListener('load', function() {
-            console.log(reader.result);
-        }, false);
+    inputNewProjectPicture.addEventListener('change', function(event) {
+
+        event.preventDefault();
+
+        const image = document.getElementById('watchImage');
+        const testPicture = document.getElementById('addNewProjectPicture').files[0];
+
+        image.src = URL.createObjectURL(testPicture);
 
     });
+
 
 
     formSubmit.addEventListener('submit', function (event) {
@@ -277,7 +280,6 @@ function validateAddNewWork() {
         formData.append("category", addNewProjectCategory);
 
         createWork.createWork(formData);
-        console.log(formData);
     });
 
 }
