@@ -254,10 +254,10 @@ function validateAddNewWork() {
     const selectNewProjectCategory = document.getElementById('addNewProjectCategory');
 
     inputNewProjectPicture.addEventListener('change', function() {
-        const image = document.getElementById('watchImage');
-        const testPicture = document.getElementById('addNewProjectPicture').files[0];
+        const watchImage = document.getElementById('watchImage');
+        const inputNewImage = inputNewProjectPicture.files[0];
 
-        image.src = URL.createObjectURL(testPicture);
+        watchImage.src = URL.createObjectURL(inputNewImage);
     });
 
     formSubmit.addEventListener('submit', function (event) {
