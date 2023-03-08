@@ -488,7 +488,7 @@ footer nav ul {
 #addImage {
 	background-color: #E8F1F7;
 	width: 100%;
-	height: 169px;
+	max-height: 169px;
 	border-radius: 3px;
 	display: grid;
 	justify-items: center;
@@ -501,6 +501,23 @@ footer nav ul {
 	width: 129px;
 	height: 100%;
 }
+#addImage i {
+	margin-top: 13px;
+	color: #B9C5CC;
+}
+#addImage label {
+	margin: 17px 0 5px 0;
+	background-color: #CBD6DC;
+	color: #306685;
+	border: none;
+	border-radius: 50px;
+	padding: 10px 30px;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 16px;
+	text-align: center;
+	cursor: pointer;
+}
 
 #addImage p {
 	text-align: center;
@@ -511,20 +528,6 @@ footer nav ul {
 
 #addImage input[type="file"] {
 	visibility: hidden;
-}
-
-.inputFile {
-	background-color: #CBD6DC;
-	color: #306685;
-	border: none;
-	border-radius: 50px;
-	margin-bottom: 0;
-	padding: 10px 30px;
-	font-weight: 500;
-	font-size: 14px;
-	line-height: 16px;
-	text-align: center;
-	cursor: pointer;
 }
 
 #sectionModal form {
