@@ -493,10 +493,13 @@ footer nav ul {
 	display: grid;
 	justify-items: center;
 	align-items: center;
+	overflow: hidden;
 }
 
 #addImage img {
-
+	object-fit: cover;
+	width: 129px;
+	height: 100%;
 }
 
 #addImage p {
