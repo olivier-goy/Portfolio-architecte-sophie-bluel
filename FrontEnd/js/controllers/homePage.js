@@ -259,14 +259,12 @@ function validateAddNewWork() {
     inputNewProjectPicture.addEventListener('change', function() {
         document.querySelector('.fa-image').style.display = "none";
         document.getElementById('watchImage').style.display = "block";
+
         const watchImage = document.getElementById('watchImage');
         const inputNewImage = inputNewProjectPicture.files[0];
 
-        console.log(inputNewImage);
-
         watchImage.src = URL.createObjectURL(inputNewImage);
     });
-
     formSubmit.addEventListener('submit', function (event) {
         event.preventDefault();
         const addNewProjectImage = inputNewProjectPicture.files[0];

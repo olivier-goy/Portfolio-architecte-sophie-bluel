@@ -506,7 +506,7 @@ footer nav ul {
 	color: #B9C5CC;
 }
 #addImage label {
-	margin: 17px 0 5px 0;
+	margin: 15px 0 5px 0;
 	background-color: #CBD6DC;
 	color: #306685;
 	border: none;
@@ -538,7 +538,7 @@ footer nav ul {
 
 #separatorModal,
 #separatorAddWork {
-	margin: 37px auto auto auto;
+	margin-top: 37px;
 	border-top: 1px solid #B3B3B3;
 }
 
@@ -557,6 +557,16 @@ footer nav ul {
 	width: 237px;
 	height: 36px;
 	cursor: pointer;
+}
+#submitAddWork input[type="submit"] {
+	background-color: #A7A7A7;
+}
+
+#submitAddWork:valid #btnValidateNewWork {
+	background-color: #1D6154;
+}
+#submitAddWork #separatorAddWork {
+	margin: 47px 0 0;
 }
 
 #addNewImage a {
