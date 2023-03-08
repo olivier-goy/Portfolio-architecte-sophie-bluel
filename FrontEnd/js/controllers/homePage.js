@@ -50,7 +50,7 @@ async function getDatas() {
 
     generateDeletedModal();
 
-    deletedProject();
+    // deletedProject();
 
     generateCategory();
 
@@ -199,32 +199,36 @@ function generateDeletedModal() {
             figure.appendChild(btnDeleted)
             figure.appendChild(image);
             figure.appendChild(figcaption);
+
+            deletedProject(btnDeleted.id);
+        }
+        function deletedProject(btn) {
+            console.log(btn)
+            const btnListenerDeleted = document.querySelectorAll('.btnDeletedProject');
+
+            for (let i = 0; btnListenerDeleted.length > i; i++) {
+                const listenerDeletedProject = btnListenerDeleted[i];
+
+                listenerDeletedProject.addEventListener("click", function (event) {
+                    const constructorDeleted = {
+                        id: listenerDeletedProject.id,
+                        token: localStorage.getItem("token")
+                    }
+
+                    const responseDeleted = deletedWork.deletedProjectService(constructorDeleted);
+
+                    if (!responseDeleted) {
+                        alert("Une erreur c'est produite");
+                    } else {
+                        event.target.parentNode.remove();
+                    };
+                });
+            }
         }
     }
 }
 
-function deletedProject() {
-    const btnListenerDeleted = document.querySelectorAll('.btnDeletedProject');
 
-    for (let i = 0; btnListenerDeleted.length > i; i++) {
-        const listenerDeletedProject = btnListenerDeleted[i];
-
-        listenerDeletedProject.addEventListener("click", function (event) {
-            const constructorDeleted = {
-                id: listenerDeletedProject.id,
-                token: localStorage.getItem("token")
-            }
-
-            const responseDeleted = deletedWork.deletedProjectService(constructorDeleted);
-
-            if (!responseDeleted) {
-                alert("Une erreur c'est produite");
-            } else {
-                event.target.parentNode.remove();
-            };
-        });
-    }
-}
 async function generateAddWorkModal() {
     const btnAddPicture = document.getElementById('btnAddNewImage');
 
