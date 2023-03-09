@@ -228,7 +228,7 @@ function deletedProject() {
     }
 }
 
-async function generateAddWorkModal() {
+function generateAddWorkModal() {
     const btnAddPicture = document.getElementById('btnAddNewImage');
 
     btnAddPicture.addEventListener("click", function () {
@@ -247,8 +247,10 @@ async function generateAddWorkModal() {
 
         title.innerText = "Ajout photo";
 
-        for (const category of categoriesApi) {
-            selectCategory.appendChild(category.createNewProjectCategory());
+        if (!document.querySelector('.optionCategory')) {
+            for (const category of categoriesApi) {
+                selectCategory.appendChild(category.createNewProjectCategory());
+            }
         }
     });
 }

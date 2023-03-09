@@ -24,9 +24,10 @@ export default class Category {
         const option = document.createElement('option');
 
         option.value = this.id;
-        option.id = "selectCategory"
+        option.classList = "optionCategory";
+        option.id = "selectCategory";
         option.innerText = this.name;
 
-        return option
+        return option;
     }
 }
