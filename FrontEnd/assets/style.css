@@ -2,7 +2,12 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-html,body,div,span,applet,object,
+html,
+body,
+div,
+span,
+applet,
+object,
 iframe,
 h1,
 h2,
@@ -495,10 +500,12 @@ footer nav ul {
 	width: 129px;
 	height: 100%;
 }
+
 #addImage i {
 	margin-top: 13px;
 	color: #B9C5CC;
 }
+
 #addImage label {
 	margin: 15px 0 5px 0;
 	background-color: #CBD6DC;
@@ -523,7 +530,10 @@ footer nav ul {
 
 #addImage input[type="file"] {
 	opacity: 0;
-	pointer-events: none;
+	width: 1px;
+	height: 100px;
+	position: absolute;
+	z-index: -1;
 }
 
 #sectionModal form {
@@ -558,6 +568,7 @@ footer nav ul {
 	height: 36px;
 	cursor: pointer;
 }
+
 #submitAddWork input[type="submit"] {
 	background-color: #A7A7A7;
 }
@@ -565,6 +576,7 @@ footer nav ul {
 #submitAddWork:valid #btnValidateNewWork {
 	background-color: #1D6154;
 }
+
 #submitAddWork #separatorAddWork {
 	margin: 47px 0 0;
 }
