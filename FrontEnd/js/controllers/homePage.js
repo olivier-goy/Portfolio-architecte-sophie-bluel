@@ -269,7 +269,7 @@ function validateAddNewWork() {
         if(!responseCreateWork) {
             alert("Une erreur c'est produite");
         } else {
-            windows.reload();
+            generateHtml(projects);
         }
 
     });
