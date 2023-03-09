@@ -56,6 +56,5 @@ export default class Project {
         figure.appendChild(figcaption);
 
         return figure;
-
     }
 }
