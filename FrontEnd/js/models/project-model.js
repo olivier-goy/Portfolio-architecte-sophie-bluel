@@ -35,4 +35,27 @@ export default class Project {
 
         return figure;
     }
+
+    deleteProjectCard() {
+        const figure = document.createElement('figure');
+        const image = document.createElement('img');
+        const figcaption = document.createElement("figcaption");
+        const btnDeleted = document.createElement('i');
+
+        btnDeleted.classList = "fa-solid fa-trash-can fa-xs btnDeletedProject"
+        btnDeleted.id = this.id;
+
+        image.src = this.imageUrl;
+        image.alt = this.title;
+        image.crossOrigin = 'anonymous';
+
+        figcaption.innerText = "éditer";
+
+        figure.appendChild(btnDeleted)
+        figure.appendChild(image);
+        figure.appendChild(figcaption);
+
+        return figure;
+
+    }
 }

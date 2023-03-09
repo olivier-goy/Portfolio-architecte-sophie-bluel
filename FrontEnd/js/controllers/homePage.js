@@ -180,24 +180,7 @@ function generateDeletedModal() {
         const sectionMain = document.getElementById('deletedWork');
 
         for (const project of projects) {
-            const figure = document.createElement('figure');
-            const image = document.createElement('img');
-            const figcaption = document.createElement("figcaption");
-            const btnDeleted = document.createElement('i');
-
-            btnDeleted.classList = "fa-solid fa-trash-can fa-xs btnDeletedProject"
-            btnDeleted.id = project.id;
-
-            image.src = project.imageUrl;
-            image.alt = project.title;
-            image.crossOrigin = 'anonymous';
-
-            figcaption.innerText = "éditer";
-
-            sectionMain.appendChild(figure)
-            figure.appendChild(btnDeleted)
-            figure.appendChild(image);
-            figure.appendChild(figcaption);
+            sectionMain.appendChild(project.deleteProjectCard());
         }
     }
 }
