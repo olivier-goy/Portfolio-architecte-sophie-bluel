@@ -22,6 +22,8 @@ export default class Project {
         const image = document.createElement("img");
         const figcaption = document.createElement("figcaption");
 
+        figure.id = "gallery" + this.id;
+
         image.src = this.imageUrl;
         image.alt = this.title;
         image.crossOrigin = 'anonymous';

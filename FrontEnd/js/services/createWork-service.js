@@ -16,7 +16,7 @@ export default class CreateWorkService {
             return response;
             
         } catch (error) {
-            
+            console.error(error);
         }
     }
 }
