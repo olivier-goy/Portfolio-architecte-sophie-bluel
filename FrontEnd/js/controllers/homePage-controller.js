@@ -275,6 +275,9 @@ function validateAddNewWork() {
                 document.getElementById('modalProject').style.display = "none";
                 document.getElementById('addNewImage').style.display = "block";
                 document.getElementById('separatorModal').style.display = "block";
+                inputNewProjectPicture.value = "";
+                inputNewProjectTitle.value = "";
+                selectNewProjectCategory.value = "";
 
                 getDatas();
             }
