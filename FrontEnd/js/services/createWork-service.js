@@ -3,7 +3,7 @@ export default class CreateWorkService {
 
     async createWork(body) {
         try {
-            const sendNewWork = await fetch('http://localhost:5678/api/works', {
+            const sendNewWork = await fetch(this.baseUrl, {
                 method: "POST",
                 headers: {
                     "Authorization": "Bearer " + localStorage.getItem("token")
@@ -11,13 +11,13 @@ export default class CreateWorkService {
                 body
             });
 
-            // if(sendNewWork.status === 200) {
-            return sendNewWork;
-            // }
-            //  else {
-            //     throw sendNewWork.statusText;
-            // }
+            if(sendNewWork.status === 201) {
+                return sendNewWork;
+            } else {
+                throw sendNewWork.statusText;
+            }
         } catch (error) {
+            console.error(error);
         }
     }
 }

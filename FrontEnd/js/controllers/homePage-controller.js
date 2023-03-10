@@ -118,6 +118,7 @@ function generateProjectHome(projects) {
 
 function generateCategory() {
     if (document.getElementById('filter')) {
+        document.getElementById('filter').innerHTML = "";
         const gallery = document.getElementById('filter');
         const input = document.createElement('input');
 
@@ -171,6 +172,7 @@ function generateModalUser() {
 
 function generateDeletedModal() {
     if (document.querySelector('.modalContent')) {
+        document.getElementById('deletedWork').innerHTML = "";
         document.querySelector('.backModal').style.display = "none";
         document.getElementById('submitAddWork').style.display = "none"
         document.getElementById('deletedWork').style.display = "grid";
@@ -236,41 +238,51 @@ function generateAddWorkModal() {
         });
     }
 }
-
 function validateAddNewWork() {
-    if(isConnected) {
+    if (isConnected) {
         const formSubmit = document.getElementById('submitAddWork');
         const inputNewProjectPicture = document.getElementById('addNewProjectPicture');
         const inputNewProjectTitle = document.getElementById('addNewProjectTitle');
         const selectNewProjectCategory = document.getElementById('addNewProjectCategory');
-    
-        inputNewProjectPicture.addEventListener('change', function() {
+
+        inputNewProjectPicture.addEventListener('change', function () {
             document.querySelector('.fa-image').style.display = "none";
             document.getElementById('watchImage').style.display = "block";
-    
+
             const watchImage = document.getElementById('watchImage');
             const inputNewImage = inputNewProjectPicture.files[0];
-    
+
             watchImage.src = URL.createObjectURL(inputNewImage);
         });
-    
-        formSubmit.addEventListener('submit', function () {
+
+        formSubmit.addEventListener('submit', async function (event) {
+            event.preventDefault();
             const addNewProjectImage = inputNewProjectPicture.files[0];
             const addNewProjectTitle = inputNewProjectTitle.value;
             const addNewProjectCategory = selectNewProjectCategory.value;
 
-            console.log(addNewProjectImage);
-    
             const formData = new FormData();
-    
+
             formData.append("image", addNewProjectImage);
             formData.append("title", addNewProjectTitle);
             formData.append("category", addNewProjectCategory);
-    
-        //    createWork.createWork(formData);
+
+            const responseCreateWork = await createWork.createWork(formData);
+
+            if (!responseCreateWork) {
+                alert("Une erreur s'est produite");
+            } else {
+                document.getElementById('modalProject').style.display = "none";
+                document.getElementById('addNewImage').style.display = "block";
+                document.getElementById('separatorModal').style.display = "block";
+
+                getDatas();
+            }
         });
     }
 }
+
+
 
 
 
