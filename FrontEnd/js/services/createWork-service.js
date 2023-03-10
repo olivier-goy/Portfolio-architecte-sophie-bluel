@@ -11,12 +11,13 @@ export default class CreateWorkService {
                 body
             });
 
-            const response = await sendNewWork.json();
-
-            return response;
-            
+            // if(sendNewWork.status === 200) {
+            return sendNewWork;
+            // }
+            //  else {
+            //     throw sendNewWork.statusText;
+            // }
         } catch (error) {
-            // console.error(error);
         }
     }
 }

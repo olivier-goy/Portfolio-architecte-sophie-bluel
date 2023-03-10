@@ -254,10 +254,12 @@ function validateAddNewWork() {
             watchImage.src = URL.createObjectURL(inputNewImage);
         });
     
-        formSubmit.addEventListener('submit', async function () {
+        formSubmit.addEventListener('submit', function () {
             const addNewProjectImage = inputNewProjectPicture.files[0];
             const addNewProjectTitle = inputNewProjectTitle.value;
             const addNewProjectCategory = selectNewProjectCategory.value;
+
+            console.log(addNewProjectImage);
     
             const formData = new FormData();
     
@@ -265,13 +267,7 @@ function validateAddNewWork() {
             formData.append("title", addNewProjectTitle);
             formData.append("category", addNewProjectCategory);
     
-            const responseCreateWork = await createWork.createWork(formData);
-    
-            if(!responseCreateWork) {
-                alert("Une erreur c'est produite");
-            } else {
-                generateProjectHome(projects);
-            }
+        //    createWork.createWork(formData);
         });
     }
 }

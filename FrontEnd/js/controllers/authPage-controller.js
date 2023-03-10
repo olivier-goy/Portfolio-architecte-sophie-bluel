@@ -36,7 +36,6 @@ async function validateAuthUser() {
                     localStorage.setItem('token', response.token);
 
                     document.location.href = "./index.html"
-
                 } else {
                     alert("Erreur dans l’identifiant ou le mot de passe");
                 }
