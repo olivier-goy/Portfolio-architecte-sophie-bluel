@@ -5,19 +5,15 @@ const authService = new AuthService()
 validateAuthUser();
 
 async function validateAuthUser() {
-    let submitAuth = document.getElementById('submitAuth');
+    const submitAuth = document.getElementById('submitAuth');
 
-    if (submitAuth) {
-    
+    if (submitAuth) { 
         submitAuth.addEventListener("submit", async function(event) {
             event.preventDefault();
 
             const emailLogin = document.getElementById('email');
             const password = document.getElementById('password');
 
-            if(!emailLogin.value || !password.value) {
-                alert("Veuillez remplire tout les champs avant de valider.")
-            } else {
                 const regexMail = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g);
                 const isValidEmail = regexMail.test(emailLogin.value);
     
@@ -41,12 +37,11 @@ async function validateAuthUser() {
 
                     document.location.href = "./index.html"
 
-
                 } else {
                     alert("Erreur dans l’identifiant ou le mot de passe");
                 }
-            }
-        });
+
+            });
     }
 }
 

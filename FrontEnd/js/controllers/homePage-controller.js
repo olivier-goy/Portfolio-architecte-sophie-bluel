@@ -25,7 +25,7 @@ async function getDatas() {
     const categoriesResponse = await responseApiCategories.json();
 
     projects = worksResponse.map(work => new Project(work));
-    generateHtml(projects);
+    generateProjectHome(projects);
 
     deletedWork = new DeletedWork();
 
@@ -45,7 +45,7 @@ async function getDatas() {
 
     userConnected();
 
-    modalUser();
+    generateModalUser();
 
     generateDeletedModal();
 
@@ -99,13 +99,13 @@ function getCategoryData() {
                         return project.categoryId == listener.id;
                     }
                 });
-                generateHtml(filters);
+                generateProjectHome(filters);
             });
         }
     }
 };
 
-function generateHtml(projects) {
+function generateProjectHome(projects) {
     if (document.querySelector('.gallery')) {
         document.querySelector('.gallery').innerHTML = "";
         const gallery = document.querySelector('.gallery');
@@ -135,7 +135,7 @@ function generateCategory() {
     }
 };
 
-function modalUser() {
+function generateModalUser() {
     if (isConnected) {
         document.getElementById('portfolio').querySelector('h2').style = "padding-left: 80px;"
 
@@ -186,7 +186,6 @@ function generateDeletedModal() {
 }
 
 function deletedProject() {
-
     const btnListenerDeleted = document.querySelectorAll('.btnDeletedProject');
 
     for (let i = 0; btnListenerDeleted.length > i; i++) {
@@ -206,73 +205,75 @@ function deletedProject() {
                 event.target.parentNode.remove();
                 document.getElementById("gallery" + listenerDeletedProject.id).remove()
             };
-
         });
     }
 }
 
 function generateAddWorkModal() {
-    const btnAddPicture = document.getElementById('btnAddNewImage');
-
-    btnAddPicture.addEventListener("click", function () {
-        document.querySelector('.backModal').style.display = "block"
-        document.getElementById('deletedWork').style.display = "none"
-        document.getElementById('submitAddWork').style.display = "flex"
-        document.getElementById('btnValidateNewWork').style.display = "flex";
-        document.getElementById('addNewImage').style.display = "none";
-        document.getElementById('separatorModal').style.display = "none";
-        document.getElementById('titleModal').innerText = "";
-        document.getElementById('watchImage').style.display = "none";
-        document.querySelector('.fa-image').style.display = "block";
-
-        const title = document.getElementById('titleModal');
-        const selectCategory = document.getElementById('addNewProjectCategory')
-
-        title.innerText = "Ajout photo";
-
-        if (!document.querySelector('.optionCategory')) {
-            for (const category of categoriesApi) {
-                selectCategory.appendChild(category.createNewProjectCategory());
+    if(isConnected) {
+        const btnAddPicture = document.getElementById('btnAddNewImage');
+        btnAddPicture.addEventListener("click", function () {
+            document.querySelector('.backModal').style.display = "block"
+            document.getElementById('deletedWork').style.display = "none"
+            document.getElementById('submitAddWork').style.display = "flex"
+            document.getElementById('btnValidateNewWork').style.display = "flex";
+            document.getElementById('addNewImage').style.display = "none";
+            document.getElementById('separatorModal').style.display = "none";
+            document.getElementById('titleModal').innerText = "";
+            document.getElementById('watchImage').style.display = "none";
+            document.querySelector('.fa-image').style.display = "block";
+    
+            const title = document.getElementById('titleModal');
+            const selectCategory = document.getElementById('addNewProjectCategory')
+    
+            title.innerText = "Ajout photo";
+    
+            if (!document.querySelector('.optionCategory')) {
+                for (const category of categoriesApi) {
+                    selectCategory.appendChild(category.createNewProjectCategory());
+                }
             }
-        }
-    });
+        });
+    }
 }
 
 function validateAddNewWork() {
-    const formSubmit = document.getElementById('submitAddWork');
-    const inputNewProjectPicture = document.getElementById('addNewProjectPicture');
-    const inputNewProjectTitle = document.getElementById('addNewProjectTitle');
-    const selectNewProjectCategory = document.getElementById('addNewProjectCategory');
-
-    inputNewProjectPicture.addEventListener('change', function() {
-        document.querySelector('.fa-image').style.display = "none";
-        document.getElementById('watchImage').style.display = "block";
-
-        const watchImage = document.getElementById('watchImage');
-        const inputNewImage = inputNewProjectPicture.files[0];
-
-        watchImage.src = URL.createObjectURL(inputNewImage);
-    });
-    formSubmit.addEventListener('submit', function () {
-        const addNewProjectImage = inputNewProjectPicture.files[0];
-        const addNewProjectTitle = inputNewProjectTitle.value;
-        const addNewProjectCategory = selectNewProjectCategory.value;
-
-        const formData = new FormData();
-
-        formData.append("image", addNewProjectImage);
-        formData.append("title", addNewProjectTitle);
-        formData.append("category", addNewProjectCategory);
-
-        const responseCreateWork = createWork.createWork(formData);
-
-        if(!responseCreateWork) {
-            alert("Une erreur c'est produite");
-        } else {
-            generateHtml(projects);
-        }
-
-    });
+    if(isConnected) {
+        const formSubmit = document.getElementById('submitAddWork');
+        const inputNewProjectPicture = document.getElementById('addNewProjectPicture');
+        const inputNewProjectTitle = document.getElementById('addNewProjectTitle');
+        const selectNewProjectCategory = document.getElementById('addNewProjectCategory');
+    
+        inputNewProjectPicture.addEventListener('change', function() {
+            document.querySelector('.fa-image').style.display = "none";
+            document.getElementById('watchImage').style.display = "block";
+    
+            const watchImage = document.getElementById('watchImage');
+            const inputNewImage = inputNewProjectPicture.files[0];
+    
+            watchImage.src = URL.createObjectURL(inputNewImage);
+        });
+    
+        formSubmit.addEventListener('submit', async function () {
+            const addNewProjectImage = inputNewProjectPicture.files[0];
+            const addNewProjectTitle = inputNewProjectTitle.value;
+            const addNewProjectCategory = selectNewProjectCategory.value;
+    
+            const formData = new FormData();
+    
+            formData.append("image", addNewProjectImage);
+            formData.append("title", addNewProjectTitle);
+            formData.append("category", addNewProjectCategory);
+    
+            const responseCreateWork = await createWork.createWork(formData);
+    
+            if(!responseCreateWork) {
+                alert("Une erreur c'est produite");
+            } else {
+                generateProjectHome(projects);
+            }
+        });
+    }
 }
 
 

@@ -13,12 +13,10 @@ export default class AuthService {
 
             if(postLogin.status === 200){
                 const response = await postLogin.json();
-        
                 return response;
             } else {
                 throw postLogin.statusText;
             }
-
         } catch (error) {
             console.error(error);
         }

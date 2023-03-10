@@ -11,7 +11,7 @@
         rel="stylesheet">
     <meta name="description" content="">
     <link rel="stylesheet" href="./assets/style.css">
-    <script src="./js/controllers/authPage.js" type="module"></script>
+    <script src="./js/controllers/authPage-controller.js" type="module"></script>
 </head>
 
 <body>
@@ -28,20 +28,18 @@
             </nav>
         </header>
         <main class="loginContainer">
-            
             <section id="contact">
                 <h2>Log In</h2>
                 <form id="submitAuth">
                     <label for="email">E-mail</label>
-                    <input type="email" name="email" id="email" value="sophie.bluel@test.tld" required>
+                    <input type="email" name="email" id="email" required>
                     <label for="password">Mot de passe</label>
-                    <input type="password" name="password" id="password" value="S0phie" required>
+                    <input type="password" name="password" id="password" required>
                     <input type="submit" value="Se connecter">
                 </form>
                 <a href="#">Mot de passe oublié</a>
             </section>
         </main>
-    
         <footer class="footer">
             <nav>
                 <ul>
@@ -51,5 +49,4 @@
         </footer>
     </div>
 </body>
-
 </html>
