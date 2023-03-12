@@ -275,12 +275,13 @@ function validateAddNewWork() {
                 document.getElementById('modalProject').style.display = "none";
                 document.getElementById('addNewImage').style.display = "block";
                 document.getElementById('separatorModal').style.display = "block";
-                inputNewProjectPicture.value = "";
-                inputNewProjectTitle.value = "";
-                selectNewProjectCategory.value = "";
 
                 getDatas();
             }
+            document.querySelector('.fa-image').style.display = "block";
+            document.getElementById('watchImage').style.display = "none";
+
+            formSubmit.reset();
         });
     }
 }
