@@ -150,11 +150,14 @@ function generateModalUser() {
         backModal.addEventListener('click', function () {
             document.getElementById('titleModal').innerText = "Galerie photo";
             document.querySelector('.backModal').style.display = "none";
-            document.getElementById('submitAddWork').style.display = "none";
+            document.getElementById('formAddWork').style.display = "none";
             document.getElementById('deletedWork').style.display = "grid";
             document.getElementById('separatorModal').style.display = "block";
-            document.getElementById('addNewImage').style.display = "block";
-            document.getElementById('watchImage').src = "";
+            document.getElementById('btnModalRedirectDeleted').style.display = "block";
+            document.querySelector('.fa-image').style.display = "block";
+            document.getElementById('watchImage').style.display = "none";
+
+            document.getElementById('formAddWork').reset();
         });
 
         const closeModal = document.querySelector('.closeModal');
@@ -174,9 +177,8 @@ function generateDeletedModal() {
     if (document.querySelector('.modalContent')) {
         document.getElementById('deletedWork').innerHTML = "";
         document.querySelector('.backModal').style.display = "none";
-        document.getElementById('submitAddWork').style.display = "none"
+        document.getElementById('formAddWork').style.display = "none"
         document.getElementById('deletedWork').style.display = "grid";
-        document.getElementById('titleModal').innerText = "";
         document.getElementById('titleModal').innerText = "Galerie photo";
 
         const sectionMain = document.getElementById('deletedWork');
@@ -217,13 +219,12 @@ function generateAddWorkModal() {
         btnAddPicture.addEventListener("click", function () {
             document.querySelector('.backModal').style.display = "block"
             document.getElementById('deletedWork').style.display = "none"
-            document.getElementById('submitAddWork').style.display = "flex"
+            document.getElementById('formAddWork').style.display = "flex"
             document.getElementById('btnValidateNewWork').style.display = "flex";
-            document.getElementById('addNewImage').style.display = "none";
+            document.getElementById('btnModalRedirectDeleted').style.display = "none";
             document.getElementById('separatorModal').style.display = "none";
             document.getElementById('titleModal').innerText = "";
             document.getElementById('watchImage').style.display = "none";
-            document.querySelector('.fa-image').style.display = "block";
     
             const title = document.getElementById('titleModal');
             const selectCategory = document.getElementById('addNewProjectCategory')
@@ -240,7 +241,7 @@ function generateAddWorkModal() {
 }
 function validateAddNewWork() {
     if (isConnected) {
-        const formSubmit = document.getElementById('submitAddWork');
+        const formSubmit = document.getElementById('formAddWork');
         const inputNewProjectPicture = document.getElementById('addNewProjectPicture');
         const inputNewProjectTitle = document.getElementById('addNewProjectTitle');
         const selectNewProjectCategory = document.getElementById('addNewProjectCategory');
@@ -273,7 +274,7 @@ function validateAddNewWork() {
                 alert("Une erreur s'est produite");
             } else {
                 document.getElementById('modalProject').style.display = "none";
-                document.getElementById('addNewImage').style.display = "block";
+                document.getElementById('btnModalRedirectDeleted').style.display = "block";
                 document.getElementById('separatorModal').style.display = "block";
 
                 getDatas();

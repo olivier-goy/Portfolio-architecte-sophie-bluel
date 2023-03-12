@@ -552,8 +552,8 @@ footer nav ul {
 	opacity: 0;
 }
 
-#addNewImage input,
-#submitAddWork input[type="submit"] {
+#btnModalRedirectDeleted input,
+#formAddWork input[type="submit"] {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -569,19 +569,19 @@ footer nav ul {
 	cursor: pointer;
 }
 
-#submitAddWork input[type="submit"] {
+#formAddWork input[type="submit"] {
 	background-color: #A7A7A7;
 }
 
-#submitAddWork:valid #btnValidateNewWork {
+#formAddWork:valid #btnValidateNewWork {
 	background-color: #1D6154;
 }
 
-#submitAddWork #separatorAddWork {
+#formAddWork #separatorAddWork {
 	margin: 47px 0 0;
 }
 
-#addNewImage a {
+#btnModalRedirectDeleted a {
 	display: flex;
 	justify-content: center;
 	text-decoration: none;

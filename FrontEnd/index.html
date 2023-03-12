@@ -67,9 +67,8 @@
 						<div id="mainModal">
 							<h2 id="titleModal"></h2>
 							<div id="sectionModal">
-								<div id="deletedWork"></div>
-								
-								<form id="submitAddWork" method="POST" enctype="multipart/form-data">
+								<div id="deletedWork"></div>		
+								<form id="formAddWork" method="POST" enctype="multipart/form-data">
 									<div id="addImage">
 										<img id="watchImage" alt="image">
 										<i class="fa-sharp fa-regular fa-image fa-5x"></i>
@@ -77,7 +76,6 @@
 										<p>jpeg, png : 4Mo max</p>
 										<input type="file" id="addNewProjectPicture" name="image" placeholder="+ Ajouter photo" accept="image/jpeg, image/png" required>
 									</div>
-
 									<label>Titre</label>
 									<input type="text" id="addNewProjectTitle" name="title" placeholder="d" required>
 									<label for="addNewProjectCategory">Catégorie</label>
@@ -89,7 +87,7 @@
 								</form>
 							</div>
 							<div id="separatorModal"></div>
-							<div id="addNewImage">
+							<div id="btnModalRedirectDeleted">
 								<input type="button" id="btnAddNewImage" placeholder="Ajouter une photo" value="Ajouter une photo">
 								<a id="deleteAll" href="#">Supprimer la galerie</a>
 							</div>
