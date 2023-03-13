@@ -17,7 +17,6 @@ login.innerText = isConnected ? "logout" : "login";
 login.href = isConnected ? "" : "./loginPage.html";
 
 async function getDatas() {
-
     const reponseApiWorks = await fetch("http://localhost:5678/api/works");
     const worksResponse = await reponseApiWorks.json();
 
@@ -44,21 +43,13 @@ async function getDatas() {
     });
 
     userConnected();
-
     generateModalUser();
-
     generateDeletedModal();
-
     deletedProject();
-
     generateCategory();
-
     getCategoryData();
-
     generateAddWorkModal();
-
     validateAddNewWork();
-
 };
 
 function userConnected() {
@@ -239,6 +230,7 @@ function generateAddWorkModal() {
         });
     }
 }
+
 function validateAddNewWork() {
     if (isConnected) {
         const formSubmit = document.getElementById('formAddWork');
