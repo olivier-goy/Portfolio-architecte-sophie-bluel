@@ -32,8 +32,6 @@ async function getDatas() {
 
     createWork = new CreateWorkService();
 
-    // categories = [...new Set(projects.map(project => project.category))];
-
     categories = [];
     projects.forEach(project => {
         const category = categories.find(cat => cat.id == project.category.id);
@@ -54,15 +52,17 @@ async function getDatas() {
 
 function userConnected() {
     if (isConnected) {
-        login.addEventListener("click", function () {
-            localStorage.clear();
-            location.reload();
-        });
+        login.addEventListener("click", logout);
     } else {
         document.getElementById('navBarUser').remove();
         document.getElementById('userBtnModification').remove();
         document.getElementById('modalProject').remove();
     }
+}
+
+function logout() {
+    localStorage.clear();
+    location.reload();
 }
 
 function getCategoryData() {
@@ -205,7 +205,7 @@ function deletedProject() {
 }
 
 function generateAddWorkModal() {
-    if(isConnected) {
+    if (isConnected) {
         const btnAddPicture = document.getElementById('btnAddNewImage');
         btnAddPicture.addEventListener("click", function () {
             document.querySelector('.backModal').style.display = "block"
@@ -216,12 +216,12 @@ function generateAddWorkModal() {
             document.getElementById('separatorModal').style.display = "none";
             document.getElementById('titleModal').innerText = "";
             document.getElementById('watchImage').style.display = "none";
-    
+
             const title = document.getElementById('titleModal');
             const selectCategory = document.getElementById('addNewProjectCategory')
-    
+
             title.innerText = "Ajout photo";
-    
+
             if (!document.querySelector('.optionCategory')) {
                 for (const category of categoriesApi) {
                     selectCategory.appendChild(category.createNewProjectCategory());

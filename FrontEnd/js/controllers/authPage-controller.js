@@ -30,7 +30,7 @@ async function validateAuthUser() {
                     const response = await authService.login(constructorLogin);
                     
                     if (!response) {
-                        return alert("Une erreur s'est produite")
+                        return alert("Erreur dans l’identifiant ou le mot de passe")
                     } 
                     localStorage.setItem('userId', response.userId);
                     localStorage.setItem('token', response.token);
