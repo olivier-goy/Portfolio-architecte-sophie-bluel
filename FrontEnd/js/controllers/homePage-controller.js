@@ -192,10 +192,12 @@ function deletedProject() {
                 token: localStorage.getItem("token")
             }
 
-            const responseDeleted = deletedWork.deletedProjectService(constructorDeleted);
+            const responseDeleted = await deletedWork.deletedProjectService(constructorDeleted);
 
-            if (!responseDeleted) {
-                alert("Une erreur c'est produite");
+            if (responseDeleted) {
+                alert("Votre session est déconnecté \nVous allez être redirige vers la page de login");
+                logout();
+                document.location.href = "./loginPage.html"
             } else {
                 event.target.parentNode.remove();
                 document.getElementById("gallery" + listenerDeletedProject.id).remove()

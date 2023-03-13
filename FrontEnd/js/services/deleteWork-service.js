@@ -9,7 +9,14 @@ export default class DeletedWork {
                     "Authorization": "Bearer " + credentials.token,
                 }
             });
-            return deleted;
+
+            if(deleted.status === 401) {
+                const json = await deleted.json();
+                return json
+            } else if (deleted.status === 500) {
+                alert("Une Erreur c'est produit");
+            }
+            
         } catch (error) {
             console.error(error);
         }
