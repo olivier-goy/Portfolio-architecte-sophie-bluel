@@ -13,7 +13,6 @@
 	<link rel="stylesheet" href="./assets/style.css">
 	<script src="./js/controllers/homePage-controller.js" type="module"></script>
 	<script src="https://kit.fontawesome.com/49449c0e92.js" crossorigin="anonymous"></script>
-
 </head>
 
 <body>
@@ -65,7 +64,7 @@
 						<span class="backModal">&larr;</span>
 						<span class="closeModal">&times;</span>
 						<div id="mainModal">
-							<h2 id="titleModal"></h2>
+							<h2 id="titleModal"> </h2>
 							<div id="sectionModal">
 								<div id="deletedWork"></div>		
 								<form id="formAddWork" method="POST" enctype="multipart/form-data">
@@ -74,7 +73,7 @@
 										<i class="fa-sharp fa-regular fa-image fa-5x"></i>
 										<label for="addNewProjectPicture">+ Ajouter photo</label>
 										<p>jpeg, png : 4Mo max</p>
-										<input type="file" id="addNewProjectPicture" name="image" placeholder="+ Ajouter photo" accept="image/jpeg, image/png" required>
+										<input type="file" id="addNewProjectPicture" name="image" accept="image/jpeg, image/png" required>
 									</div>
 									<label>Titre</label>
 									<input type="text" id="addNewProjectTitle" name="title" placeholder="d" required>
@@ -83,12 +82,12 @@
 										<option id="selectCategory"></option>
 									</select>
 									<label id="separatorAddWork"></label>
-									<input type="submit" id="btnValidateNewWork" placeholder="Valider" value="Valider">
+									<input type="submit" id="btnValidateNewWork" value="Valider">
 								</form>
 							</div>
 							<div id="separatorModal"></div>
 							<div id="btnModalRedirectDeleted">
-								<input type="button" id="btnAddNewImage" placeholder="Ajouter une photo" value="Ajouter une photo">
+								<input type="button" id="btnAddNewImage" value="Ajouter une photo">
 								<a id="deleteAll" href="#">Supprimer la galerie</a>
 							</div>
 						</div>
@@ -121,5 +120,4 @@
 		</footer>
 	</div>
 </body>
-
 </html>
