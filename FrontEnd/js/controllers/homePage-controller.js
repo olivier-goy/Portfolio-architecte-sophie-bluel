@@ -187,21 +187,23 @@ function deletedProject() {
         const listenerDeletedProject = btnListenerDeleted[i];
 
         listenerDeletedProject.addEventListener("click", async function (event) {
-            const constructorDeleted = {
-                id: listenerDeletedProject.id,
-                token: localStorage.getItem("token")
+            if (window.confirm("Veuillez confirmer la suppression du projet")) {
+                const constructorDeleted = {
+                    id: listenerDeletedProject.id,
+                    token: localStorage.getItem("token")
+                }
+
+                const responseDeleted = await deletedWork.deletedProjectService(constructorDeleted);
+
+                if (responseDeleted) {
+                    alert("Votre session est déconnectée \nVous allez être redirige vers la page de login");
+                    logout();
+                    document.location.href = "./loginPage.html"
+                } else {
+                    event.target.parentNode.remove();
+                    document.getElementById("gallery" + listenerDeletedProject.id).remove()
+                };
             }
-
-            const responseDeleted = await deletedWork.deletedProjectService(constructorDeleted);
-
-            if (responseDeleted) {
-                alert("Votre session est déconnecté \nVous allez être redirige vers la page de login");
-                logout();
-                document.location.href = "./loginPage.html"
-            } else {
-                event.target.parentNode.remove();
-                document.getElementById("gallery" + listenerDeletedProject.id).remove()
-            };
         });
     }
 }
