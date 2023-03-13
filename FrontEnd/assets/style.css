@@ -2,87 +2,19 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -90,37 +22,23 @@ video {
 	font: inherit;
 	vertical-align: baseline;
 }
-
 /* HTML5 display-role reset for older browsers */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-
 body {
 	line-height: 1;
 	height: 100%;
 }
-
 ol,
 ul {
 	list-style: none;
 }
-
 blockquote,
 q {
 	quotes: none;
 }
-
 blockquote:before,
 blockquote:after,
 q:before,
@@ -128,35 +46,29 @@ q:after {
 	content: '';
 	content: none;
 }
-
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
 /** end reset css**/
 body {
 	font-family: 'Work Sans';
 	font-size: 14px;
 }
-
 #navBarUser {
 	height: 60px;
 	background-color: #000000;
 }
-
 #navBarUser ul {
 	height: 60px;
 	display: flex;
 	justify-content: center;
 }
-
 #navBarUser li {
 	color: #FFFFFF;
 	width: 216px;
 	text-align: center;
 }
-
 #navBarUser .btnNavUser {
 	font-weight: 700;
 	padding: 0.6% 1.1%;
@@ -165,22 +77,18 @@ body {
 	text-align: center;
 	color: #000000;
 }
-
 .container {
 	max-width: 1140px;
 	margin: auto;
 }
-
 header {
 	display: flex;
 	justify-content: space-between;
 	margin: 50px 0
 }
-
 section {
 	margin: 50px 0
 }
-
 h1 {
 	display: flex;
 	flex-direction: column;
@@ -189,74 +97,60 @@ h1 {
 	font-weight: 800;
 	color: #B1663C
 }
-
 h1>span {
 	font-family: 'Work Sans';
 	font-size: 10px;
 	letter-spacing: 0.1em;
 }
-
 h2 {
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 30px;
 	color: #1D6154
 }
-
 nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
 }
-
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
 	cursor: pointer;
 }
-
 li:hover,
 a:hover {
 	color: #B1663C;
 }
-
 a {
 	color: #000000;
 	text-decoration: none;
 }
-
 #introduction {
 	display: flex;
 	align-items: center;
 }
-
 #introduction figure {
 	flex: 1
 }
-
 #introduction img {
 	display: block;
 	margin: auto;
 	width: 80%;
 }
-
 #introduction article {
 	flex: 1
 }
-
 #introduction h2 {
 	margin-bottom: 1em;
 }
-
 #introduction p {
 	margin-bottom: 0.5em;
 }
-
 #portfolio h2 {
 	text-align: center;
 	margin: 6em 0 1em 0;
 }
-
 #userBtnModification {
 	font-size: 12px;
 	margin-left: 20px;
@@ -264,11 +158,9 @@ a {
 	align-items: center;
 	cursor: pointer;
 }
-
 #filter {
 	text-align: center;
 }
-
 #filter input {
 	font-family: 'Syne';
 	font-weight: 700;
@@ -281,7 +173,6 @@ a {
 	color: #1D6154;
 	cursor: pointer;
 }
-
 .gallery {
 	width: 100%;
 	display: grid;
@@ -289,31 +180,25 @@ a {
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
 }
-
 .gallery img {
 	width: 100%;
 }
-
 .loginContainer {
 	padding-top: 120px;
 	min-height: 100%;
 	position: relative;
 }
-
 #contact {
 	width: 50%;
 	margin: auto;
 }
-
 #contact>* {
 	display: flex;
 	justify-content: center;
 }
-
 #contact h2 {
 	margin-bottom: 20px;
 }
-
 #contact form,
 #sectionModal form {
 	text-align: left;
@@ -321,7 +206,6 @@ a {
 	display: flex;
 	flex-direction: column;
 }
-
 #contact input,
 #sectionModal input,
 #sectionModal select {
@@ -330,21 +214,17 @@ a {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-
 #contact label,
 #sectionModal label {
 	margin: 2em 0 1em 0;
 }
-
 #contact textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-
 #contact a {
 	color: black;
 }
-
 input[type="submit"] {
 	font-family: 'Syne';
 	font-weight: 700;
@@ -355,19 +235,16 @@ input[type="submit"] {
 	text-align: center;
 	border-radius: 60px;
 }
-
 .footer {
 	position: absolute;
 	bottom: 0;
 	width: 1140px;
 }
-
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
 	margin: 2em;
 }
-
 .modalProjectModification {
 	display: none;
 	position: fixed;
@@ -381,7 +258,6 @@ footer nav ul {
 	background-color: rgb(0, 0, 0);
 	background-color: rgba(0, 0, 0, 0.4);
 }
-
 .modalContent {
 	position: relative;
 	background-color: #FFFFFF;
@@ -396,19 +272,16 @@ footer nav ul {
 	animation-name: animatetop;
 	animation-duration: 0.8s
 }
-
 @-webkit-keyframes animatetop {
 	from {
 		top: -300px;
 		opacity: 0
 	}
-
 	to {
 		top: 0;
 		opacity: 1
 	}
 }
-
 @keyframes animatetop {
 	from {
 		top: -300px;
@@ -420,7 +293,6 @@ footer nav ul {
 		opacity: 1
 	}
 }
-
 .closeModal {
 	color: black;
 	float: right;
@@ -428,7 +300,6 @@ footer nav ul {
 	font-size: 28px;
 	cursor: pointer;
 }
-
 .backModal {
 	color: #000000;
 	float: left;
@@ -436,12 +307,10 @@ footer nav ul {
 	font-size: 25px;
 	cursor: pointer;
 }
-
 #mainModal {
 	padding: 40px 75px;
 
 }
-
 #mainModal h2 {
 	font-family: 'Work Sans';
 	font-weight: 400;
@@ -450,26 +319,22 @@ footer nav ul {
 	color: #000000;
 	margin: 0;
 }
-
 #deletedWork {
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	margin-top: 46px;
 	width: 100%;
 }
-
 #deletedWork figure {
 	justify-self: center;
 	overflow: hidden;
 	height: 141px;
 	width: 82px;
 }
-
 #deletedWork>figure img {
 	object-fit: cover;
 	height: 104px;
 	width: 100%;
 }
-
 #deletedWork>figure i {
 	display: flex;
 	justify-content: center;
@@ -483,7 +348,6 @@ footer nav ul {
 	border-radius: 2px;
 	cursor: pointer;
 }
-
 #addImage {
 	background-color: #E8F1F7;
 	width: 100%;
@@ -494,18 +358,15 @@ footer nav ul {
 	align-items: center;
 	overflow: hidden;
 }
-
 #addImage img {
 	object-fit: cover;
 	width: 129px;
 	height: 100%;
 }
-
 #addImage i {
 	margin-top: 13px;
 	color: #B9C5CC;
 }
-
 #addImage label {
 	margin: 15px 0 5px 0;
 	background-color: #CBD6DC;
@@ -519,7 +380,6 @@ footer nav ul {
 	text-align: center;
 	cursor: pointer;
 }
-
 #addImage p {
 	text-align: center;
 	font-weight: 400;
@@ -527,7 +387,6 @@ footer nav ul {
 	line-height: 12px;
 	margin-bottom: 15px;
 }
-
 #addImage input[type="file"] {
 	opacity: 0;
 	width: 1px;
@@ -535,23 +394,19 @@ footer nav ul {
 	position: absolute;
 	z-index: -1;
 }
-
 #sectionModal form {
 	width: 100%;
 	display: flex;
 	justify-content: center;
 }
-
 #separatorModal,
 #separatorAddWork {
 	margin-top: 37px;
 	border-top: 1px solid #B3B3B3;
 }
-
 #sectionModal input[type="text"]::-webkit-input-placeholder {
 	opacity: 0;
 }
-
 #btnModalRedirectDeleted input,
 #formAddWork input[type="submit"] {
 	display: flex;
@@ -568,19 +423,15 @@ footer nav ul {
 	height: 36px;
 	cursor: pointer;
 }
-
 #formAddWork input[type="submit"] {
 	background-color: #A7A7A7;
 }
-
 #formAddWork:valid #btnValidateNewWork {
 	background-color: #1D6154;
 }
-
 #formAddWork #separatorAddWork {
 	margin: 47px 0 0;
 }
-
 #btnModalRedirectDeleted a {
 	display: flex;
 	justify-content: center;
