@@ -55,6 +55,7 @@ function userConnected() {
         login.addEventListener("click", logout);
     } else {
         document.getElementById('navBarUser').remove();
+        document.getElementById('userBtnModificationIntroduction').remove();
         document.getElementById('userBtnModification').remove();
         document.getElementById('modalProject').remove();
     }

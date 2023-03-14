@@ -137,6 +137,13 @@ a {
 	display: block;
 	margin: auto;
 	width: 80%;
+	margin-bottom: 15px;
+}
+#introduction a {
+	font-size: 13px;
+	line-height: 16px;
+	margin-left: 57px;
+	cursor: pointer;
 }
 #introduction article {
 	flex: 1
@@ -155,7 +162,6 @@ a {
 	font-size: 12px;
 	margin-left: 20px;
 	color: #000000;
-	align-items: center;
 	cursor: pointer;
 }
 #filter {
