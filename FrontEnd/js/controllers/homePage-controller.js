@@ -266,8 +266,12 @@ function validateAddNewWork() {
 
             const responseCreateWork = await createWork.createWork(formData);
 
-            if (!responseCreateWork) {
+            if (responseCreateWork.status === 400 || responseCreateWork.status === 500) {
                 alert("Une erreur s'est produite");
+            } else if(responseCreateWork.status === 401) {
+                alert("Votre session est déconnectée \nVous allez être redirige vers la page de login");
+                logout();
+                document.location.href = "./loginPage.html"
             } else {
                 document.getElementById('modalProject').style.display = "none";
                 document.getElementById('btnModalRedirectDeleted').style.display = "block";

@@ -12,9 +12,10 @@ export default class CreateWorkService {
             });
 
             if(sendNewWork.status === 201) {
-                return sendNewWork;
+                const json = await sendNewWork.json();
+                return json;
             } else {
-                throw sendNewWork.statusText;
+                return await sendNewWork;
             }
         } catch (error) {
             console.error(error);
