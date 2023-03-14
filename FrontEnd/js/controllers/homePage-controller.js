@@ -56,6 +56,7 @@ function userConnected() {
     } else {
         document.getElementById('navBarUser').remove();
         document.getElementById('userBtnModificationIntroduction').remove();
+        document.getElementById('userBtnModificationIntroductionText').remove();
         document.getElementById('userBtnModification').remove();
         document.getElementById('modalProject').remove();
     }
