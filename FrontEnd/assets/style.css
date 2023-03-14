@@ -128,7 +128,6 @@ a {
 }
 #introduction {
 	display: flex;
-	align-items: center;
 }
 #introduction figure {
 	flex: 1
@@ -139,17 +138,20 @@ a {
 	width: 80%;
 	margin-bottom: 15px;
 }
-#introduction a {
+#introduction a{
 	font-size: 13px;
 	line-height: 16px;
-	margin-left: 57px;
 	cursor: pointer;
 }
+#userBtnModificationIntroduction {
+	margin-left: 57px;
+}
 #introduction article {
-	flex: 1
+	flex: 1;
+	padding-top: 20px;
 }
 #introduction h2 {
-	margin-bottom: 1em;
+	margin: 1em 0 1em 0;
 }
 #introduction p {
 	margin-bottom: 0.5em;
