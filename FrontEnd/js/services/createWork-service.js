@@ -1,5 +1,5 @@
 export default class CreateWorkService {
-    baseUrl = "http://localhost:5678/api/works"
+    baseUrl = "http://localhost:5678/api/works";
 
     async createWork(body) {
         try {

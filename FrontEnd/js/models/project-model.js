@@ -9,12 +9,12 @@ export default class Project {
     category
 
     constructor(projectData) {
-        this.id = projectData.id
-        this.title = projectData.title
-        this.imageUrl = projectData.imageUrl
-        this.categoryId = projectData.categoryId
-        this.userId = projectData.userId
-        this.category = new Category(projectData.category)        
+        this.id = projectData.id;
+        this.title = projectData.title;
+        this.imageUrl = projectData.imageUrl;
+        this.categoryId = projectData.categoryId;
+        this.userId = projectData.userId;
+        this.category = new Category(projectData.category);     
     }
 
     createProjectCard() {
@@ -42,7 +42,7 @@ export default class Project {
         const figcaption = document.createElement("figcaption");
         const btnDeleted = document.createElement('i');
 
-        btnDeleted.classList = "fa-solid fa-trash-can fa-xs btnDeletedProject"
+        btnDeleted.classList = "fa-solid fa-trash-can fa-xs btnDeletedProject";
         btnDeleted.id = this.id;
 
         image.src = this.imageUrl;
@@ -51,7 +51,7 @@ export default class Project {
 
         figcaption.innerText = "éditer";
 
-        figure.appendChild(btnDeleted)
+        figure.appendChild(btnDeleted);
         figure.appendChild(image);
         figure.appendChild(figcaption);
 

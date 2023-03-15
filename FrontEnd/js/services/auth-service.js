@@ -1,5 +1,5 @@
 export default class AuthService {
-    baseUrl = "http://localhost:5678/api/users/"
+    baseUrl = "http://localhost:5678/api/users/";
 
     async login(credentials) {
         try {

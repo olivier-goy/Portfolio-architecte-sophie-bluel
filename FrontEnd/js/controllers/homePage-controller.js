@@ -131,7 +131,7 @@ function generateCategory() {
 
 function generateModalUser() {
     if (isConnected) {
-        document.getElementById('portfolio').querySelector('h2').style = "padding-left: 80px;"
+        document.getElementById('portfolio').querySelector('h2').style = "padding-left: 80px;";
 
         const modal = document.getElementById('modalProject');
         const openModal = document.getElementById('userBtnModification');
@@ -200,10 +200,10 @@ function deletedProject() {
                 if (responseDeleted) {
                     alert("Votre session est déconnectée \nVous allez être redirige vers la page de login");
                     logout();
-                    document.location.href = "./loginPage.html"
+                    document.location.href = "./loginPage.html";
                 } else {
                     event.target.parentNode.remove();
-                    document.getElementById("gallery" + listenerDeletedProject.id).remove()
+                    document.getElementById("gallery" + listenerDeletedProject.id).remove();
                 };
             }
         });
@@ -214,9 +214,9 @@ function generateAddWorkModal() {
     if (isConnected) {
         const btnAddPicture = document.getElementById('btnAddNewImage');
         btnAddPicture.addEventListener("click", function () {
-            document.querySelector('.backModal').style.display = "block"
-            document.getElementById('deletedWork').style.display = "none"
-            document.getElementById('formAddWork').style.display = "flex"
+            document.querySelector('.backModal').style.display = "block";
+            document.getElementById('deletedWork').style.display = "none";
+            document.getElementById('formAddWork').style.display = "flex";
             document.getElementById('btnValidateNewWork').style.display = "flex";
             document.getElementById('btnModalRedirectDeleted').style.display = "none";
             document.getElementById('separatorModal').style.display = "none";
@@ -224,7 +224,7 @@ function generateAddWorkModal() {
             document.getElementById('watchImage').style.display = "none";
 
             const title = document.getElementById('titleModal');
-            const selectCategory = document.getElementById('addNewProjectCategory')
+            const selectCategory = document.getElementById('addNewProjectCategory');
 
             title.innerText = "Ajout photo";
 
@@ -273,7 +273,7 @@ function validateAddNewWork() {
             } else if(responseCreateWork.status === 401) {
                 alert("Votre session est déconnectée \nVous allez être redirige vers la page de login");
                 logout();
-                document.location.href = "./loginPage.html"
+                document.location.href = "./loginPage.html";
             } else {
                 document.getElementById('modalProject').style.display = "none";
                 document.getElementById('btnModalRedirectDeleted').style.display = "block";
