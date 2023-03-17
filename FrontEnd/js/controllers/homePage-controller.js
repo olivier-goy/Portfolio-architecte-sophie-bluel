@@ -13,7 +13,7 @@ getDatas();
 
 const isConnected = !!localStorage.getItem('token');
 const login = document.getElementById('login');
-login.innerText = isConnected ? "logout" : "login";
+login.innerText = isConnected ? "Logout" : "Login";
 login.href = isConnected ? "" : "./loginPage.html";
 
 async function getDatas() {
@@ -189,7 +189,7 @@ function deletedProject() {
         const listenerDeletedProject = btnListenerDeleted[i];
 
         listenerDeletedProject.addEventListener("click", async function (event) {
-            if (window.confirm("Veuillez confirmer la suppression du projet")) {
+            if (window.confirm("Veuillez confirmer la suppression du projet.")) {
                 const constructorDeleted = {
                     id: listenerDeletedProject.id,
                     token: localStorage.getItem("token")
@@ -198,7 +198,7 @@ function deletedProject() {
                 const responseDeleted = await deletedWork.deletedProjectService(constructorDeleted);
 
                 if (responseDeleted) {
-                    alert("Votre session est déconnectée \nVous allez être redirige vers la page de login");
+                    alert("Votre session est déconnectée. \nVous allez être redirigé vers la page de login.");
                     logout();
                     document.location.href = "./loginPage.html";
                 } else {
@@ -271,7 +271,7 @@ function validateAddNewWork() {
             if (responseCreateWork.status === 400 || responseCreateWork.status === 500) {
                 alert("Une erreur s'est produite");
             } else if(responseCreateWork.status === 401) {
-                alert("Votre session est déconnectée \nVous allez être redirige vers la page de login");
+                alert("Votre session est déconnectée. \nVous allez être redirigé vers la page de login.");
                 logout();
                 document.location.href = "./loginPage.html";
             } else {

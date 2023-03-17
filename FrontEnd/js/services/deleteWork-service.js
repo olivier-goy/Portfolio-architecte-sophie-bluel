@@ -12,7 +12,7 @@ export default class DeletedWork {
                 const json = await deleted.json();
                 return json;
             } else if (deleted.status === 500) {
-                alert("Une Erreur c'est produit");
+                alert("Une Erreur s'est produite");
             }
             
         } catch (error) {
